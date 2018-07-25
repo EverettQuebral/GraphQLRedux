@@ -47,7 +47,7 @@ const store = createStore(
 /** Apollo Client Setup */
 
 const cache = new ReduxCache({ store })
-const graphQLServer = '127.0.0.1:4000'
+const graphQLServer = 'eqsystems.herokuapp.com'
 const httpLink = new HttpLink({ uri: 'http://' + graphQLServer + '/graphql' })
 const wsLink = new WebSocketLink({ 
   uri : 'ws://' + graphQLServer + '/subscriptions',
