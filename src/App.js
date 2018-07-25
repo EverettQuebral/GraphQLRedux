@@ -43,12 +43,21 @@ const App = () => (
       if (loading) return <div>Loading</div>
       return (
         <Fragment>
+          <Header />
           <Chatters chatters={data.getUsers} />
           <AddChatter firstName='test' lastName='test' />
         </Fragment>
       )
     }}
   </Query>
+)
+
+const Header = () => (
+  <header>
+    <head>GraphQL with Apollo + Redux Application</head>
+    <h3>This is a simple application to demonstrate Togetherness Level 2 for using Apollo Client and Redux</h3>
+    <h5>Please be patient as this is hosted using a Free Web Dyno from Heroku.</h5>
+  </header>
 )
 
 const ChattersList = ({ chatters, selectedChatterIds }) => (
