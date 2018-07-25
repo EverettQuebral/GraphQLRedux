@@ -18,7 +18,7 @@ Combining Apollo Client and Redux is difficult if not designed properly.  Both h
 
 Taking a step back and looking the the Clean Architecture from Martin Fowler, we need to understand what is the responsibility of Redux and GraphQL (Apollo) to make sure that the two have a clear boundaries of their responsibilty.  This is discussed more by Robin Wieruch and described as the Togetherness Level.  I won't go into the details but in this particular application, I have chosen the Togetherness Level 2 where there's a level of interaction on how Apollo and Redux can co-exist together 
 
-The application is available here https://eqsystems.herokuapp.com/graphiql
+The application is available here https://eqsystemclient.herokuapp.com
 
 
 # Create React App
