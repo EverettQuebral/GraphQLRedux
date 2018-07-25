@@ -50,7 +50,7 @@ const cache = new ReduxCache({ store })
 const graphQLServer = 'eqsystems.herokuapp.com'
 const httpLink = new HttpLink({ uri: 'https://' + graphQLServer + '/graphql' })
 const wsLink = new WebSocketLink({ 
-  uri : 'ws://' + graphQLServer + '/subscriptions',
+  uri : 'wss://' + graphQLServer + '/subscriptions',
   options: {
     reconnect: true
   }
