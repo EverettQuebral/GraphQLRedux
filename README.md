@@ -1,3 +1,4 @@
+## (Work in Progress)
 # React GraphQL and Redux
 This is a simple application in using both GraphQL and Redux. The objective is to show how GraphQL and Redux can co exists on the same application.
 
@@ -17,7 +18,8 @@ Combining Apollo Client and Redux is difficult if not designed properly.  Both h
 
 Taking a step back and looking the the Clean Architecture from Martin Fowler, we need to understand what is the responsibility of Redux and GraphQL (Apollo) to make sure that the two have a clear boundaries of their responsibilty.  This is discussed more by Robin Wieruch and described as the Togetherness Level.  I won't go into the details but in this particular application, I have chosen the Togetherness Level 2 where there's a level of interaction on how Apollo and Redux can co-exist together 
 
-(Work in Progress)
+The application is available here https://eqsystems.herokuapp.com/graphiql
+
 
 # Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
