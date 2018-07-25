@@ -74,7 +74,6 @@ const mapStateToProps = state => ({
   selectedChatterIds: state.chatterState.selectedChatterIds
 })
 
-
 const Chatters = connect(mapStateToProps)(ChattersList)
 
 const Select = ({isSelected, toggleSelectedChatter}) => (
@@ -107,18 +106,30 @@ const Star = ({ id }) => (
   </Mutation>
 )
 
-const AddChatter = ({ firstName, lastName }) => (
-  <Mutation mutation={ADD_CHATTER} variables={{ firstName, lastName }} onCompleted={()=>{
-    console.log('Added Chatter')
-  }}>
-    {addChatter => (
-      <form onSubmit={addChatter}>
-        <input type='text' placeholder='First Name'/>
-        <input type='text' placeholder='Last Name'/>
-        <input type='submit' name='Submit'/>
-      </form>
-    )}
-  </Mutation>
-)
+class AddChatter extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      firstName : "",
+      lastName : ""
+    }
+  }
+
+  render(){
+    return (
+      <Mutation mutation={ADD_CHATTER} variables={{ firstName: this.state.firstName, lastName: this.state.lastName }} onCompleted={()=>{
+        console.log('Added Chatter')
+      }}>
+        {addChatter => (
+          <form onSubmit={addChatter}>
+            <input type='text' placeholder='First Name' onChange={ e => this.setState({ firstName: e.target.value })}/>
+            <input type='text' placeholder='Last Name' onChange={ e => this.setState({ lastName: e.target.value })}/>
+            <input type='submit' name='Submit'/>
+          </form>
+        )}
+      </Mutation>
+    )
+  }
+}
 
 export default App

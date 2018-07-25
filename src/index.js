@@ -17,7 +17,9 @@ import { ReduxCache, apolloReducer } from 'apollo-cache-redux'
 
 /** Redux Store Setup */
 const initialState = {
-  selectedChatterIds: []
+  selectedChatterIds: [],
+  firstName: '',
+  lastName: ''
 }
 
 function chatReducer(state = initialState, action){
