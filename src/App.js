@@ -54,7 +54,7 @@ const App = () => (
 
 const Header = () => (
   <header>
-    <head>GraphQL with Apollo + Redux Application</head>
+    <h1>GraphQL with Apollo + Redux Application</h1>
     <h3>This is a simple application to demonstrate Togetherness Level 2 for using Apollo Client and Redux</h3>
     <h5>Please be patient as this is hosted using a Free Web Dyno from Heroku.</h5>
   </header>
