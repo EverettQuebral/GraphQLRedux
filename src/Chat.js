@@ -16,8 +16,8 @@ const GET_MESSAGES = gql `
 `
 
 const MESSAGE_SUBSCRIBER = gql `
-  subscription ($channel: String!) {
-    messageAdded(channel:$channel) {
+  subscription onMessageAdded ($channel: String!) {
+    messageAdded(channel: $channel) {
       message
       id
       author
@@ -34,6 +34,29 @@ const MESSAGE_SENDER = gql `
     }
   }
 `
+
+const DisplayNewMesage = ({ message }) => (
+  <div>
+    { console.log("New Message here ", message) }
+    <div key={message.key}> { message.messageAdded.author} {message.messageAdded.message} </div>
+  </div>
+)
+class Subscribe extends Component {
+  constructor(props){
+    super(props)
+
+  }
+  render(){
+    return (
+      <Subscription subscription={MESSAGE_SUBSCRIBER} variables={{ channel: this.props.channel }}>
+      {({ data, loading }) => {
+        if (loading) return <div>Loading</div>
+        if (data) return <DisplayNewMesage message={data} />
+      }}
+      </Subscription>
+    )
+  }
+}
 
 const Messages = ({ title }) => (
   <Query query={GET_MESSAGES}>
@@ -97,9 +120,12 @@ class Sender extends Component {
   }
 }
 
+
+
 const Chat = () => (
   <div>
     <Messages title="Real Time Chat Here" />
+    <Subscribe channel="test" />
     <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here'}}/>
   </div>
 )
