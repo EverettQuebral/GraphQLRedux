@@ -51,14 +51,14 @@ class Subscribe extends Component {
       <Subscription subscription={MESSAGE_SUBSCRIBER} variables={{ channel: this.props.channel }}>
       {({ data, loading }) => {
         if (loading) return <div>Loading</div>
-        if (data) return <DisplayNewMesage message={data} />
+        if (data) return <DisplayNewMesage message={data.messageAdded} />
       }}
       </Subscription>
     )
   }
 }
 
-const Messages = ({ title }) => (
+const MessagesQuery = ({ title }) => (
   <Query query={GET_MESSAGES}>
     {({loading, error, data}) => {
       if (error) return <div> Error </div>
@@ -67,19 +67,88 @@ const Messages = ({ title }) => (
       return (
         <div>
           <div>{title}</div>
-          <MessageList messages={data.messages}/>
+          {/* <MessageList messages={data.messages}/> */}
         </div>
       )
     }}
   </Query>
 )
 
+class MessagesPage extends Component {
+  constructor(props){
+    super(props)
+    console.log("Constructor ", props)
+  }
+
+  componentWillReceiveProps(props){
+    console.log("Component will receive props ", props)
+  }
+
+  componentDidMount(){
+    this.props.subscribeToNewComments()
+  }
+
+  render(){
+    return (
+      <div>
+        <MessageList messages={this.props.messages} />
+      </div>
+    )
+  }
+}
+
+// const Messages = ({ title }) => (
+//   <Query query={GET_MESSAGES}>
+//     {({ subscribeToMore, data, result }) => (    
+//       <MessagesPage {...data}
+//         subscribeToNewComments = {() =>
+//           subscribeToMore({
+//             document: MESSAGE_SUBSCRIBER,
+//             variables: { channel: 'testing' },
+//             updateQuery: ( prev, { subscriptionData }) => {
+//               if (!subscriptionData.data) return prev;
+//               const newMessageItem = subscriptionData.data.messageAdded
+//               console.log("New Mesage ", newMessageItem)
+
+//               console.log(prev)
+//               return Object.assign({}, prev, { newMessageItem, ...prev.messages })
+//             }
+//           })
+//         }
+//       />
+//     )}
+//   </Query>
+// )
+
+const Messages = ({ title }) => (
+  <Query query={GET_MESSAGES}>
+    {({ loading, data, subscribeToMore }) => {
+      if (loading) return <div>Loading</div>
+
+      subscribeToMore({
+        document: MESSAGE_SUBSCRIBER,
+        variables: { channel: 'testing' },
+        updateQuery: ( prev, { subscriptionData }) => {
+          if (!subscriptionData.data) return prev
+          const newMessageItem = subscriptionData.data.messageAdded
+          console.log("New Message ", newMessageItem)
+          return {
+            messages: [...prev.messages,newMessageItem ]
+          }
+        }
+      })
+      return <div><MessageList messages={data.messages} /></div>
+    }}
+  </Query>
+)
+
 const MessageList = ({ messages }) => (
   <div>
-    { console.log (messages) }
-    { messages.map( (mess) => {
-      return (<div key={mess.id}> {mess.author}  {mess.message} </div>)
-    })}
+    { 
+      messages && messages.map( (mess) => {
+        return (<div key={mess.id}> {mess.author}  {mess.message} </div>)
+      })
+    }
   </div>
 )
 
@@ -125,8 +194,9 @@ class Sender extends Component {
 const Chat = () => (
   <div>
     <Messages title="Real Time Chat Here" />
-    <Subscribe channel="test" />
-    <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here'}}/>
+    {/* <Subscribe channel="test" /> */}
+    {/* <MessagesQuery title="title" /> */}
+    <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
   </div>
 )
 
