@@ -1,5 +1,5 @@
 ## (Work in Progress)
-# React GraphQL and Redux
+# React GraphQL Apollo Client and Redux
 This is a simple application in using both GraphQL and Redux. The objective is to show how GraphQL and Redux can co exists on the same application.
 
 So to start, this application is created using create-react-app.  It is a very helpful tool to bootstrap any React Application.
