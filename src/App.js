@@ -10,6 +10,9 @@ import { Button } from '@zendeskgarden/react-buttons'
 import { TextField, Label, Hint, Input, Message } from '@zendeskgarden/react-textfields'
 import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 
+import { Jumbotron } from 'reactstrap'
+import { InputGroup, InputGroupAddon, InputGroupText, InputStrap, ButtonStrap } from 'reactstrap'
+
 import '@zendeskgarden/react-grid/dist/styles.css'
 import '@zendeskgarden/react-buttons/dist/styles.css'
 import '@zendeskgarden/react-textfields/dist/styles.css'
@@ -65,9 +68,12 @@ const App = () => (
 
 const Header = () => (
   <header>
-    <h1>GraphQL with Apollo + Redux Application</h1>
-    <h3>This is a simple application to demonstrate Togetherness Level 2 for using Apollo Client and Redux</h3>
-    <h5>Please be patient as this is hosted using a Free Web Dyno from Heroku.</h5>
+    <Jumbotron>
+      <h1>GraphQL with Apollo + Redux Application</h1>
+      <h3>This is a simple application to demonstrate Togetherness Level 2 for using Apollo Client and Redux</h3>
+      <h4>Please be patient as this is hosted using a Free Web Dyno from Heroku.</h4>
+      <h4><a href="https://everettquebral.com">by Everett Quebral</a></h4>
+    </Jumbotron>
   </header>
 )
 
@@ -80,9 +86,9 @@ const ChattersList = ({ chatters, selectedChatterIds }) => (
         rowClassName.push('row_selected')
       }
       return (
-        <Row className={rowClassName.join(' ')} key={chatter.id}>
+        <Row className={rowClassName.join(' ')} key={chatter.id} alignItems='center' style={{ minHeight: '4em', backgroundColor: 'lightgray', marginBottom: 8}}>
           <Col><SelectedContainer id={chatter.id} isSelected={isSelected} /></Col>
-          <Col><a href={chatter.id}>{chatter.first_name} {chatter.last_name}</a></Col>
+          <Col><Label><a href={chatter.id}>{chatter.first_name} {chatter.last_name}</a></Label></Col>
           <Col><Star id={chatter.id} /></Col>
         </Row>
       )
@@ -152,7 +158,7 @@ class AddChatter extends Component {
               <Input onChange={ e => this.setState({ lastName: e.target.value })}/>
               <Message>Your Last Name that will be used for the Chat</Message>
             </TextField>
-            <input type='submit' name='Submit'/>
+            <Input type='submit' name='Submit'/>
           </form>
         )}
       </Mutation>
