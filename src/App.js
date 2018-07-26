@@ -4,6 +4,7 @@ import './App.css';
 import gql from 'graphql-tag'
 import { Query, Mutation } from 'react-apollo'
 import { connect } from 'react-redux'
+import { ReduxCache } from 'apollo-cache-redux';
 import { ThemeProvider } from '@zendeskgarden/react-theming'
 import { Grid, Row, Col } from '@zendeskgarden/react-grid'
 import { Button } from '@zendeskgarden/react-buttons'
@@ -11,7 +12,7 @@ import { TextField, Label, Hint, Input, Message } from '@zendeskgarden/react-tex
 import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 
 import { Jumbotron } from 'reactstrap'
-import { InputGroup, InputGroupAddon, InputGroupText, InputStrap, ButtonStrap } from 'reactstrap'
+import { InputGroup, InputGroupAddon, InputGroupText, InputStrap, ButtonStrap, Form } from 'reactstrap'
 
 import '@zendeskgarden/react-grid/dist/styles.css'
 import '@zendeskgarden/react-buttons/dist/styles.css'
@@ -70,9 +71,11 @@ const Header = () => (
   <header>
     <Jumbotron>
       <h1>GraphQL with Apollo + Redux Application</h1>
-      <h3>This is a simple application to demonstrate Togetherness Level 2 for using Apollo Client and Redux</h3>
+      <h3 className='lead'>This is a simple application to demonstrate Togetherness Level 2 for using Apollo Client and Redux</h3>
+      <hr />
       <h4>Please be patient as this is hosted using a Free Web Dyno from Heroku.</h4>
       <h4><a href="https://everettquebral.com">by Everett Quebral</a></h4>
+      <cite>The column on the left where a Selected/UnSelect component state is managed by ReduxCache.  Selecting/UnSelecting will send a dispatch to update the state while the Star Button on the right is techically sending an Apollo Client Mutation to the server increasing the Star of the Chatter.  This way the relationship of the Apollo Client and Redux Store are managed on the read/write situation.</cite>
     </Jumbotron>
   </header>
 )
@@ -147,7 +150,8 @@ class AddChatter extends Component {
         console.log('Added Chatter')
       }}>
         {addChatter => (
-          <form onSubmit={addChatter}>
+          <Form onSubmit={addChatter}>
+            <Label>You can add a new chatter that will demonstrate a Mutation call to the GraphQL Server</Label>
             <TextField>
               <Label>Enter your First Name</Label>
               <Input onChange={ e => this.setState({ firstName: e.target.value })}/>
@@ -159,7 +163,7 @@ class AddChatter extends Component {
               <Message>Your Last Name that will be used for the Chat</Message>
             </TextField>
             <Input type='submit' name='Submit'/>
-          </form>
+          </Form>
         )}
       </Mutation>
     )
