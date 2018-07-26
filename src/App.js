@@ -14,6 +14,9 @@ import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 import { Jumbotron } from 'reactstrap'
 import { InputGroup, InputGroupAddon, InputGroupText, InputStrap, ButtonStrap, Form } from 'reactstrap'
 
+import AddChatter from './AddChatter'
+import Chat from './Chat'
+
 import '@zendeskgarden/react-grid/dist/styles.css'
 import '@zendeskgarden/react-buttons/dist/styles.css'
 import '@zendeskgarden/react-textfields/dist/styles.css'
@@ -39,16 +42,6 @@ const STAR_USER = gql `
   }
 `
 
-const ADD_CHATTER = gql `
-  mutation ($firstName:String, $lastName:String){
-    addChatter(first_name:$firstName, last_name:$lastName){
-      message
-      status_code
-      description
-    }
-  }
-`
-
 const App = () => (
   <Query query={GET_USERS}>
     {({loading, error, data}) => {
@@ -60,6 +53,7 @@ const App = () => (
             <Header />
             <Chatters chatters={data.getUsers} />
             <AddChatter firstName='test' lastName='test' />
+            <Chat />
           </Fragment>
         </ThemeProvider>
       )
@@ -135,39 +129,6 @@ const Star = ({ id }) => (
   </Mutation>
 )
 
-class AddChatter extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      firstName : "",
-      lastName : ""
-    }
-  }
 
-  render(){
-    return (
-      <Mutation mutation={ADD_CHATTER} variables={{ firstName: this.state.firstName, lastName: this.state.lastName }} onCompleted={()=>{
-        console.log('Added Chatter')
-      }}>
-        {addChatter => (
-          <Form onSubmit={addChatter}>
-            <Label>You can add a new chatter that will demonstrate a Mutation call to the GraphQL Server</Label>
-            <TextField>
-              <Label>Enter your First Name</Label>
-              <Input onChange={ e => this.setState({ firstName: e.target.value })}/>
-              <Message>Your First Name that will be used for the Chat</Message>
-            </TextField>
-            <TextField>
-              <Label>Enter your Last Name</Label>
-              <Input onChange={ e => this.setState({ lastName: e.target.value })}/>
-              <Message>Your Last Name that will be used for the Chat</Message>
-            </TextField>
-            <Input type='submit' name='Submit'/>
-          </Form>
-        )}
-      </Mutation>
-    )
-  }
-}
 
 export default App
