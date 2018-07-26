@@ -4,7 +4,16 @@ import './App.css';
 import gql from 'graphql-tag'
 import { Query, Mutation } from 'react-apollo'
 import { connect } from 'react-redux'
+import { ThemeProvider } from '@zendeskgarden/react-theming'
+import { Grid, Row, Col } from '@zendeskgarden/react-grid'
+import { Button } from '@zendeskgarden/react-buttons'
+import { TextField, Label, Hint, Input, Message } from '@zendeskgarden/react-textfields'
+import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 
+import '@zendeskgarden/react-grid/dist/styles.css'
+import '@zendeskgarden/react-buttons/dist/styles.css'
+import '@zendeskgarden/react-textfields/dist/styles.css'
+import '@zendeskgarden/react-toggles/dist/styles.css'
 
 const GET_USERS = gql `
   query {
@@ -42,11 +51,13 @@ const App = () => (
       if (error) return <div>Error</div>
       if (loading) return <div>Loading</div>
       return (
-        <Fragment>
-          <Header />
-          <Chatters chatters={data.getUsers} />
-          <AddChatter firstName='test' lastName='test' />
-        </Fragment>
+        <ThemeProvider>
+          <Fragment>
+            <Header />
+            <Chatters chatters={data.getUsers} />
+            <AddChatter firstName='test' lastName='test' />
+          </Fragment>
+        </ThemeProvider>
       )
     }}
   </Query>
@@ -61,7 +72,7 @@ const Header = () => (
 )
 
 const ChattersList = ({ chatters, selectedChatterIds }) => (
-  <ul>
+  <Grid>
     { chatters.map( (chatter) => {
       const isSelected = selectedChatterIds.includes(chatter.id)
       const rowClassName = ['row']
@@ -69,14 +80,14 @@ const ChattersList = ({ chatters, selectedChatterIds }) => (
         rowClassName.push('row_selected')
       }
       return (
-        <li className={rowClassName.join(' ')} key={chatter.id}>
-          <SelectedContainer id={chatter.id} isSelected={isSelected} /> { ' ' }
-          <a href={chatter.id}>{chatter.first_name} {chatter.last_name}</a> { ' ' }
-          <Star id={chatter.id} />
-        </li>
+        <Row className={rowClassName.join(' ')} key={chatter.id}>
+          <Col><SelectedContainer id={chatter.id} isSelected={isSelected} /></Col>
+          <Col><a href={chatter.id}>{chatter.first_name} {chatter.last_name}</a></Col>
+          <Col><Star id={chatter.id} /></Col>
+        </Row>
       )
     })}
-  </ul>
+  </Grid>
 )
 
 const mapStateToProps = state => ({
@@ -86,9 +97,9 @@ const mapStateToProps = state => ({
 const Chatters = connect(mapStateToProps)(ChattersList)
 
 const Select = ({isSelected, toggleSelectedChatter}) => (
-  <button type='button' onClick={toggleSelectedChatter}>
-    {isSelected ? 'Unselect' : 'Selected'}
-  </button>
+  <Toggle checked={isSelected} onClick={toggleSelectedChatter}>
+    <LabelToggle>{isSelected ? 'UnSelect' : 'Selected'}</LabelToggle>
+  </Toggle>
 )
 
 const mapDispatchToProps = ( dispatch, { id, isSelected } ) => ({
@@ -107,10 +118,10 @@ const Star = ({ id }) => (
     console.log('completed')
   }}>
     {starUser => (
-      <button type='button' onClick={starUser}>
+      <Button type='button' onClick={starUser}>
         Star
         {console.log('starred')}
-      </button>
+      </Button>
     )}
   </Mutation>
 )
@@ -131,8 +142,16 @@ class AddChatter extends Component {
       }}>
         {addChatter => (
           <form onSubmit={addChatter}>
-            <input type='text' placeholder='First Name' onChange={ e => this.setState({ firstName: e.target.value })}/>
-            <input type='text' placeholder='Last Name' onChange={ e => this.setState({ lastName: e.target.value })}/>
+            <TextField>
+              <Label>Enter your First Name</Label>
+              <Input onChange={ e => this.setState({ firstName: e.target.value })}/>
+              <Message>Your First Name that will be used for the Chat</Message>
+            </TextField>
+            <TextField>
+              <Label>Enter your Last Name</Label>
+              <Input onChange={ e => this.setState({ lastName: e.target.value })}/>
+              <Message>Your Last Name that will be used for the Chat</Message>
+            </TextField>
             <input type='submit' name='Submit'/>
           </form>
         )}
