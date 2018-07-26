@@ -15,7 +15,9 @@ class AddChatter extends Component {
   
     render(){
       return (
-        <Mutation mutation={ADD_CHATTER} variables={{ firstName: this.state.firstName, lastName: this.state.lastName }} onCompleted={()=>{
+        <Mutation mutation={ADD_CHATTER} 
+          variables={{ firstName: this.state.firstName, lastName: this.state.lastName }} 
+          onCompleted={()=>{
           console.log('Added Chatter')
         }}>
           {addChatter => (
