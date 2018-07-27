@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import gql from 'graphql-tag'
 import { Query, Mutation } from 'react-apollo'
 import { connect } from 'react-redux'
@@ -51,9 +51,21 @@ const App = () => (
         <ThemeProvider>
           <Fragment>
             <Header />
-            <Chatters chatters={data.getUsers} />
-            <AddChatter firstName='test' lastName='test' />
-            <Chat />
+            <Grid fluid>
+              <Row gutters>
+                <Col>
+                  <Chatters chatters={data.getUsers} />
+                </Col>
+                <Col>
+                  <AddChatter firstName='test' lastName='test' />
+                </Col>
+              </Row>
+              <Row gutters>
+                <Col>
+                  <Chat />
+                </Col>
+              </Row>
+            </Grid>          
           </Fragment>
         </ThemeProvider>
       )
