@@ -55,14 +55,8 @@ const cache = new ReduxCache({ store })
 let httpUri = ''
 let wsUri = ''
 
-if (process.env.NODE_ENV === 'development'){
-  httpUri = 'http://localhost:4000/graphql' 
-  wsUri = 'ws://localhost:4000/subscriptions'
-}
-else {
-  httpUri = 'https://eqsystems.herokuapp.com/graphql'
-  wsUri = 'wss://eqsystems.herokuapp.com/subscriptions'
-}
+httpUri = 'https://eqsystems.herokuapp.com/graphql'
+wsUri = 'wss://eqsystems.herokuapp.com/subscriptions'
 
 console.log("Environment ", process.env.NODE_ENV, httpUri, wsUri)
 
