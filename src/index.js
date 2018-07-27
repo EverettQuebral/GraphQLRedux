@@ -52,24 +52,27 @@ const store = createStore(
 
 const cache = new ReduxCache({ store })
 
-const graphQLServer = 'eqsystems.herokuapp.com'
-const httpLink = new HttpLink({ uri: 'https://' + graphQLServer + '/graphql' })
+let httpUri = ''
+let wsUri = ''
+
+if (process.env.NODE_ENV === 'development'){
+  httpUri = 'http://localhost:4000/graphql' 
+  wsUri = 'ws://localhost:4000/subscriptions'
+}
+else {
+  httpUri = 'https://eqsystems.herokuapp.com/graphql'
+  wsUri = 'wss://eqsystems.herokuapp.com/subscriptions'
+}
+
+console.log("Environment ", process.env.NODE_ENV, httpUri, wsUri)
+
+const httpLink = new HttpLink({ uri: httpUri })
 const wsLink = new WebSocketLink({ 
-  uri : 'wss://' + graphQLServer + '/subscriptions',
+  uri : wsUri,
   options: {
     reconnect: true
   }
 })
-
-// const graphQLServer = '192.168.1.119:4000'
-// const httpLink = new HttpLink({ uri: 'http://' + graphQLServer + '/graphql' })
-// const wsLink = new WebSocketLink({ 
-//   uri : 'ws://' + graphQLServer + '/subscriptions',
-//   options: {
-//     reconnect: true
-//   }
-// })
-
 
 const link = split(
   ({ query }) => {
@@ -94,7 +97,4 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('root')
 )
-
-
-
 registerServiceWorker();
