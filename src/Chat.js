@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { Subscription, Query, Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, FormText, Jumbotron, InputGroup, InputGroupAddon } from 'reactstrap'
+import { FauxInput } from '@zendeskgarden/react-textfields'
+import { Grid, Row, Col } from '@zendeskgarden/react-grid'
 
 
 const GET_MESSAGES = gql `
@@ -121,34 +123,16 @@ const Messages = ({ title }) => (
   </Query>
 )
 
-// this is the one that is working
-// const Messages = ({ title }) => (
-//   <Query query={GET_MESSAGES}>
-//     {({ loading, data, subscribeToMore }) => {
-//       if (loading) return <div>Loading</div>
-
-//       subscribeToMore({
-//         document: MESSAGE_SUBSCRIBER,
-//         variables: { channel: title },
-//         updateQuery: ( prev, { subscriptionData }) => {
-//           if (!subscriptionData.data) return prev
-//           const newMessageItem = subscriptionData.data.messageAdded
-//           console.log("New Message ", newMessageItem)
-//           return {
-//             messages: [...prev.messages,newMessageItem ]
-//           }
-//         }
-//       })
-//       return <div><MessageList messages={data.messages} /></div>
-//     }}
-//   </Query>
-// )
-
 const MessageList = ({ messages }) => (
   <div>
     { 
       messages && messages.map( (mess) => {
-        return (<div key={mess.id}> {mess.author}  {mess.message} </div>)
+        return (
+          <InputGroup key={mess.id}>
+            <InputGroupAddon addonType='prepend'>{mess.author}</InputGroupAddon>
+            <Input value={mess.message} />
+          </InputGroup>
+        )
       })
     }
   </div>
@@ -163,27 +147,40 @@ class Sender extends Component {
       message: ''
     }
   }
+  
+  clearInputs() {
+    this.setState({
+      message: ''
+    })
+  }
+
   render(){
     return (
       <Mutation mutation={MESSAGE_SENDER} 
-          variables={{ channel: this.state.channel, author: this.state.author, message: this.state.message }} 
-          onCompleted={ ()=> { console.log('Mutation Completed') }}>
-
-            {sendMessage =>(
-              <Form onSubmit={sendMessage}>
-                <FormGroup>
-                  <Label for='channel'>Channel</Label>
-                  <Input type='text' name='channel' onChange={ e => this.setState({ channel: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for='author'>Author</Label>
-                  <Input type='text' name='author' onChange={ e => this.setState({ author: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for='message'>Message</Label>
-                  <Input type='text' name='message' onChange={ e => this.setState({ message: e.target.value })} />
-                </FormGroup>
-                <input type='Submit' />
+          variables={{ channel: this.state.channel, author: this.state.author, message: this.state.message }} >
+            {sendMessage => (
+              <Form onSubmit={ e => { 
+                  e.preventDefault()
+                  sendMessage()
+                  this.clearInputs()
+                }}
+                  onChange={
+                    console.log('nothing is changing')
+                  }
+                >
+                <InputGroup>
+                  <InputGroupAddon addonType='prepend'>Channel</InputGroupAddon>
+                  <Input type='text' name='channel' value={this.state.channel} onChange={ e => this.setState({ channel: e.target.value })} />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType='prepend'>Author</InputGroupAddon>
+                  <Input type='text' name='author' value={this.state.author} onChange={ e => this.setState({ author: e.target.value })} />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType='prepend'>Message</InputGroupAddon>
+                  <Input type='text' name='channel' value={this.state.message} onChange={ e => this.setState({ message: e.target.value })} />
+                  <InputGroupAddon addonType='append'><input type='submit' /></InputGroupAddon>
+                </InputGroup>
               </Form>
             )}
       </Mutation>
@@ -191,14 +188,26 @@ class Sender extends Component {
   }
 }
 
-
+const Divider = () => (
+  <Jumbotron>
+    <h3>The Example below is a little bit of a chat application using Query, Subscription and Mutation</h3>
+    <h5>Clicking on the submit button will not refresh the page</h5>
+  </Jumbotron>
+)
 
 const Chat = () => (
   <div>
-    <Messages title="Channel" />
-    {/* <Subscribe channel="test" /> */}
-    {/* <MessagesQuery title="title" /> */}
-    <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
+    <Divider />
+    <Row>
+      <Col>
+        <h3>Messages</h3>
+        <Messages title="Channel" />
+      {/* <Subscribe channel="test" /> */}
+      {/* <MessagesQuery title="title" /> */}
+        <h3>About You</h3>
+        <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
+      </Col>
+    </Row>
   </div>
 )
 
