@@ -62,3 +62,9 @@ typings/
 
 # build
 build/
+
+# vscode
+.vscode/
+
+# MAC environment
+.DS_Store
