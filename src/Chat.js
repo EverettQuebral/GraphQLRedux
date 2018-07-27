@@ -16,7 +16,7 @@ const GET_MESSAGES = gql `
 `
 
 const MESSAGE_SUBSCRIBER = gql `
-  subscription onMessageAdded ($channel: String!) {
+  subscription ($channel: String!) {
     messageAdded(channel: $channel) {
       message
       id
@@ -41,22 +41,23 @@ const DisplayNewMesage = ({ message }) => (
     <div key={message.key}> { message.messageAdded.author} {message.messageAdded.message} </div>
   </div>
 )
-class Subscribe extends Component {
-  constructor(props){
-    super(props)
 
-  }
-  render(){
-    return (
-      <Subscription subscription={MESSAGE_SUBSCRIBER} variables={{ channel: this.props.channel }}>
-      {({ data, loading }) => {
-        if (loading) return <div>Loading</div>
-        if (data) return <DisplayNewMesage message={data.messageAdded} />
-      }}
-      </Subscription>
-    )
-  }
-}
+// class Subscribe extends Component {
+//   constructor(props){
+//     super(props)
+
+//   }
+//   render(){
+//     return (
+//       <Subscription subscription={MESSAGE_SUBSCRIBER} variables={{ channel: this.props.channel }}>
+//       {({ data, loading }) => {
+//         if (loading) return <div>Loading</div>
+//         if (data) return <DisplayNewMesage message={data.messageAdded} />
+//       }}
+//       </Subscription>
+//     )
+//   }
+// }
 
 const MessagesQuery = ({ title }) => (
   <Query query={GET_MESSAGES}>
@@ -97,50 +98,51 @@ class MessagesPage extends Component {
   }
 }
 
-// const Messages = ({ title }) => (
-//   <Query query={GET_MESSAGES}>
-//     {({ subscribeToMore, data, result }) => (    
-//       <MessagesPage {...data}
-//         subscribeToNewComments = {() =>
-//           subscribeToMore({
-//             document: MESSAGE_SUBSCRIBER,
-//             variables: { channel: 'testing' },
-//             updateQuery: ( prev, { subscriptionData }) => {
-//               if (!subscriptionData.data) return prev;
-//               const newMessageItem = subscriptionData.data.messageAdded
-//               console.log("New Mesage ", newMessageItem)
-
-//               console.log(prev)
-//               return Object.assign({}, prev, { newMessageItem, ...prev.messages })
-//             }
-//           })
-//         }
-//       />
-//     )}
-//   </Query>
-// )
-
 const Messages = ({ title }) => (
   <Query query={GET_MESSAGES}>
-    {({ loading, data, subscribeToMore }) => {
-      if (loading) return <div>Loading</div>
+    {({ subscribeToMore, data, result }) => (    
+      <MessagesPage {...data}
+        subscribeToNewComments = {() =>
+          subscribeToMore({
+            document: MESSAGE_SUBSCRIBER,
+            variables: { channel: 'testing' },
+            updateQuery: ( prev, { subscriptionData }) => {
+              if (!subscriptionData.data) return prev;
+              const newMessageItem = subscriptionData.data.messageAdded
+              console.log("New Mesage ", newMessageItem)
 
-      subscribeToMore({
-        document: MESSAGE_SUBSCRIBER,
-        variables: { channel: 'testing' },
-        updateQuery: ( prev, { subscriptionData }) => {
-          if (!subscriptionData.data) return prev
-          const newMessageItem = subscriptionData.data.messageAdded
-          console.log("New Message ", newMessageItem)
-          return {
-            messages: [...prev.messages,newMessageItem ]
-          }
+              console.log(prev)
+              return { messages: [...prev.messages, newMessageItem]}
+            }
+          })
         }
-      })
-      return <div><MessageList messages={data.messages} /></div>
-    }}
+      />
+    )}
   </Query>
 )
+
+// this is the one that is working
+// const Messages = ({ title }) => (
+//   <Query query={GET_MESSAGES}>
+//     {({ loading, data, subscribeToMore }) => {
+//       if (loading) return <div>Loading</div>
+
+//       subscribeToMore({
+//         document: MESSAGE_SUBSCRIBER,
+//         variables: { channel: title },
+//         updateQuery: ( prev, { subscriptionData }) => {
+//           if (!subscriptionData.data) return prev
+//           const newMessageItem = subscriptionData.data.messageAdded
+//           console.log("New Message ", newMessageItem)
+//           return {
+//             messages: [...prev.messages,newMessageItem ]
+//           }
+//         }
+//       })
+//       return <div><MessageList messages={data.messages} /></div>
+//     }}
+//   </Query>
+// )
 
 const MessageList = ({ messages }) => (
   <div>
@@ -193,7 +195,7 @@ class Sender extends Component {
 
 const Chat = () => (
   <div>
-    <Messages title="Real Time Chat Here" />
+    <Messages title="Channel" />
     {/* <Subscribe channel="test" /> */}
     {/* <MessagesQuery title="title" /> */}
     <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
