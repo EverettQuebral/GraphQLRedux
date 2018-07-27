@@ -30,7 +30,7 @@ class AddChatter extends Component {
               <FormGroup>
                 <Label for='last-name'>Enter your Last Name</Label>
                 <Input type='text' name='last-name' onChange={ e => this.setState({ lastName: e.target.value })}/>
-              </FormGroup>
+              </FormGroup>      
               <Input type='submit' name='Submit'/>
             </Form>
           )}
