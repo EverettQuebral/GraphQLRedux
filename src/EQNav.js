@@ -37,9 +37,9 @@ class EQNav extends React.Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
+            {/* <NavItem>
               <NavLink href="/components/">Components</NavLink>
-            </NavItem>
+            </NavItem> */}
             <NavItem>
               <NavLink href="https://github.com/EverettQuebral/GraphQLRedux">GitHub</NavLink>
             </NavItem>

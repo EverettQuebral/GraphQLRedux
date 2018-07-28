@@ -112,10 +112,13 @@ const MessageList = ({ messages }) => (
     { 
       messages && messages.map( (mess) => {
         return (
-          <InputGroup key={mess.id}>
-            <InputGroupAddon addonType='prepend'>{mess.author}</InputGroupAddon>
-            <Input value={mess.message} />
-          </InputGroup>
+          <Fragment>
+            <br />
+            <InputGroup key={mess.id}>
+              <InputGroupAddon addonType='prepend'>{mess.author}</InputGroupAddon>
+              <Input value={mess.message} />
+            </InputGroup>
+          </Fragment>
         )
       })
     }
@@ -183,6 +186,7 @@ const Chat = () => (
         <Col>
           <h3>Messages</h3>
           <Messages title="Channel" />
+          <hr />
           <h3>About You</h3>
           <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
         </Col>
