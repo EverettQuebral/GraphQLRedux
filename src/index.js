@@ -15,6 +15,10 @@ import { Provider } from 'react-redux'
 import { ReduxCache, apolloReducer } from 'apollo-cache-redux'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '@zendeskgarden/react-grid/dist/styles.css'
+import '@zendeskgarden/react-buttons/dist/styles.css'
+import '@zendeskgarden/react-textfields/dist/styles.css'
+import '@zendeskgarden/react-toggles/dist/styles.css'
 
 
 /** Redux Store Setup */
@@ -52,11 +56,12 @@ const store = createStore(
 
 const cache = new ReduxCache({ store })
 
-let httpUri = ''
-let wsUri = ''
+const httpUri = 'http://192.168.1.119:4000/graphql'
+const wsUri = 'ws://192.168.1.119:4000/subscriptions'
 
-httpUri = 'https://eqsystems.herokuapp.com/graphql'
-wsUri = 'wss://eqsystems.herokuapp.com/subscriptions'
+// const httpUri = 'https://eqsystems.herokuapp.com/graphql'
+// const wsUri = 'wss://eqsystems.herokuapp.com/subscriptions'
+
 
 console.log("Environment ", process.env.NODE_ENV, httpUri, wsUri)
 

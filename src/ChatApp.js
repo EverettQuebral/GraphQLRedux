@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import { Subscription, Query, Mutation } from 'react-apollo'
+import { Query, Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import { Button, Form, FormGroup, Label, Input, FormText, Jumbotron, InputGroup, InputGroupAddon } from 'reactstrap'
-import { FauxInput } from '@zendeskgarden/react-textfields'
-import { Grid, Row, Col } from '@zendeskgarden/react-grid'
+import { Form, Input, InputGroup, InputGroupAddon, Container, Grid } from 'reactstrap'
+import { Row, Col } from '@zendeskgarden/react-grid'
+
+import EQNav from './EQNav'
 
 
 const GET_MESSAGES = gql `
@@ -155,10 +156,12 @@ class Sender extends Component {
                   <InputGroupAddon addonType='prepend'>Channel</InputGroupAddon>
                   <Input type='text' name='channel' value={this.state.channel} onChange={ e => this.setState({ channel: e.target.value })} />
                 </InputGroup>
+                <br />
                 <InputGroup>
                   <InputGroupAddon addonType='prepend'>Author</InputGroupAddon>
                   <Input type='text' name='author' value={this.state.author} onChange={ e => this.setState({ author: e.target.value })} />
                 </InputGroup>
+                <br />
                 <InputGroup>
                   <InputGroupAddon addonType='prepend'>Message</InputGroupAddon>
                   <Input type='text' name='channel' value={this.state.message} onChange={ e => this.setState({ message: e.target.value })} />
@@ -171,27 +174,21 @@ class Sender extends Component {
   }
 }
 
-const Divider = () => (
-  <Jumbotron>
-    <h3>The Example below is a little bit of a chat application using Query, Subscription and Mutation</h3>
-    <h5>Clicking on the submit button will not refresh the page</h5>
-  </Jumbotron>
-)
 
 const Chat = () => (
-  <div>
-    <Divider />
-    <Row>
-      <Col>
-        <h3>Messages</h3>
-        <Messages title="Channel" />
-      {/* <Subscribe channel="test" /> */}
-      {/* <MessagesQuery title="title" /> */}
-        <h3>About You</h3>
-        <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
-      </Col>
-    </Row>
-  </div>
+  <Fragment>
+    <EQNav />
+    <Container>
+      <Row>
+        <Col>
+          <h3>Messages</h3>
+          <Messages title="Channel" />
+          <h3>About You</h3>
+          <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
+        </Col>
+      </Row>
+    </Container>
+  </Fragment>
 )
 
 export default Chat
