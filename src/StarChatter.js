@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react'
-import { ThemeProvider } from "styled-components";
+import React, { Fragment } from 'react'
 import gql from 'graphql-tag'
-import { Query, Mutation, Subscription } from 'react-apollo'
+import { Query, Mutation } from 'react-apollo'
 import { Row, Col } from '@zendeskgarden/react-grid'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Label } from '@zendeskgarden/react-textfields'
@@ -91,7 +90,6 @@ const GetChatters = () => (
     {({ loading, error, data }) => {
       if (error) return <div>Error</div>
       if (loading) return <div>Loading</div>
-      { console.log(data.getUsers ) }
       return (
         <Chatters chatters={data.getUsers} />
       )
@@ -109,7 +107,7 @@ const StarChatter = () => (
         <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
       </Jumbotron>
       <Row>
-        <Col>
+        <Col xs='auto'>
           <h3>Most Voted Stars</h3>
           <GetChatters />
         </Col>

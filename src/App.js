@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import {
-  Link,
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
 } from 'react-router-dom'
 
 import StarChatter from './StarChatter';

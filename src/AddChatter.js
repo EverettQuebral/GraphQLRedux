@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
-import { Button, Form, FormGroup, Label, Input, FormText, Col } from 'reactstrap'
+import { Form, FormGroup, Label, Input, Col } from 'reactstrap'
 
 
 class AddChatter extends Component {

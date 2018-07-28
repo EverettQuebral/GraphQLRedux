@@ -2,8 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Query, Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import { Form, Input, InputGroup, InputGroupAddon, Container, Grid, Jumbotron } from 'reactstrap'
-import { Row, Col } from '@zendeskgarden/react-grid'
+import { Form, Input, InputGroup, InputGroupAddon, Container, Jumbotron } from 'reactstrap'
 
 import EQNav from './EQNav'
 

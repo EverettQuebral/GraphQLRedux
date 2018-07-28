@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react'
-import { Jumbotron, Button, Container } from 'reactstrap';
+import { Jumbotron, Container } from 'reactstrap';
 import EQNav from './EQNav'
 
 
 const Intro = () => (
   <Jumbotron>
-    <h1>All About React, Redux, GraphQL, Apollo and a Lot More</h1>
-    <p className='lead'>This page is all about sharing information on how to build a React Application with Redux and Apollo Client on the Front End while using GraphQL with Apollo Express on the Back End</p>
+    <h1>All About Building Scallable Applications</h1>
+    <p className='lead'>I have been building scallable applications from the ground up for over 2 decades now and would like to share some of those learnings here.</p>
+    <p>This is about sharing some of those information and giving an example of the most common challenges specially in using the latest and greatest technology currently available</p>
+    <p>I have a couple of Examples now that are focused using React, Redux, GraphQL, Apollo Client</p>
     <p>Also coming soon will be an example using Apollo Client in iOS and Android</p>
     <hr className='my-2'/>
     <p>You can take a look at the examples by navigating to the Samples Menu.</p>
@@ -16,10 +18,11 @@ const Intro = () => (
 const Main = () => (
   <Fragment>
     <EQNav />
-    <Intro />
     <Container>
+      <br />
+      <Intro />
       <div>
-        <h3>React GraphQL Apollo Client and Redux</h3>
+        <h4>React GraphQL Apollo Client and Redux</h4>
         <hr />
         <p>This is a simple application in using both GraphQL and Redux. The objective is to show how GraphQL and Redux can co exists on the same application.</p>
         <p>So to start, this application is created using create-react-app. It is a very helpful tool to bootstrap any React Application.</p>
