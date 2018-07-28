@@ -36,7 +36,7 @@ class AddChatter extends Component {
                 </Col>
               </FormGroup>      
               <FormGroup check row> 
-                <Col sm={{ size:10, offset: 2}}>
+                <Col sm={{ size:10 }}>
                   <Input type='submit' name='Submit'/>
                 </Col>
               </FormGroup>

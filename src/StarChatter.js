@@ -103,7 +103,7 @@ const StarChatter = () => (
       <Container>
       <br />
       <Jumbotron>
-        <h1 className='display-3'>Redux Store + Apollo Client</h1>
+        <h1 className='display-3'>Redux Store + GraphQL + Apollo Client</h1>
         <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
       </Jumbotron>
       <Row>
