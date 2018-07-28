@@ -114,9 +114,9 @@ const MessageList = ({ messages }) => (
     { 
       messages && messages.map( (mess) => {
         return (
-          <Fragment>
+          <Fragment key={mess.id}>
             <br />
-            <InputGroup key={mess.id}>
+            <InputGroup >
               <InputGroupAddon addonType='prepend'>{mess.author}</InputGroupAddon>
               <Input value={mess.message} />
             </InputGroup>
