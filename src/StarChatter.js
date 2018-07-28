@@ -7,7 +7,7 @@ import { Button } from '@zendeskgarden/react-buttons'
 import { Label } from '@zendeskgarden/react-textfields'
 import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 import { connect } from 'react-redux'
-import { Container } from 'reactstrap'
+import { Container, Jumbotron } from 'reactstrap'
 
 import AddChatter from './AddChatter'
 import EQNav from './EQNav'
@@ -103,11 +103,18 @@ const StarChatter = () => (
   <Fragment>
     <EQNav />
       <Container>
+      <br />
+      <Jumbotron>
+        <h1 className='display-3'>Redux Store + Apollo Client</h1>
+        <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
+      </Jumbotron>
       <Row>
         <Col>
+          <h3>Most Voted Stars</h3>
           <GetChatters />
         </Col>
         <Col>
+          <h3>Add your favorite Star</h3>
           <AddChatter firstName='test' lastName='test' />
         </Col>
       </Row>

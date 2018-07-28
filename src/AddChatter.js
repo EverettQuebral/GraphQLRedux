@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, FormText, Col } from 'reactstrap'
 
 
 class AddChatter extends Component {
@@ -22,16 +22,24 @@ class AddChatter extends Component {
         }}>
           {addChatter => (
             <Form onSubmit={addChatter}>
-              <Label>You can add a new chatter that will demonstrate a Mutation call to the GraphQL Server</Label>
-              <FormGroup>
-                <Label for='first-name'>Enter your First Name</Label>
-                <Input type='text' name='first-name' onChange={ e => this.setState({ firstName: e.target.value })}/>
+              <Label>Please add your favorite Star here</Label>
+              <FormGroup row>
+                <Label for='first-name'>First Name</Label>
+                <Col sm={10}>
+                  <Input type='text' name='first-name' onChange={ e => this.setState({ firstName: e.target.value })}/>
+                </Col>
               </FormGroup>
-              <FormGroup>
-                <Label for='last-name'>Enter your Last Name</Label>
-                <Input type='text' name='last-name' onChange={ e => this.setState({ lastName: e.target.value })}/>
+              <FormGroup row>
+                <Label for='last-name'>Last Name</Label>
+                <Col sm={10}>
+                  <Input type='text' name='last-name' onChange={ e => this.setState({ lastName: e.target.value })}/>
+                </Col>
               </FormGroup>      
-              <Input type='submit' name='Submit'/>
+              <FormGroup check row> 
+                <Col sm={{ size:10, offset: 2}}>
+                  <Input type='submit' name='Submit'/>
+                </Col>
+              </FormGroup>
             </Form>
           )}
         </Mutation>
