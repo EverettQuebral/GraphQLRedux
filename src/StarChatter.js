@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react'
 import gql from 'graphql-tag'
 import { Query, Mutation } from 'react-apollo'
-import { Row, Col } from '@zendeskgarden/react-grid'
+// import { Row, Col } from '@zendeskgarden/react-grid'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Label } from '@zendeskgarden/react-textfields'
 import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 import { connect } from 'react-redux'
 import { Container, Jumbotron } from 'reactstrap'
+import { Grid, Row, Col } from '@zendeskgarden/react-grid'
 
 import AddChatter from './AddChatter'
-import EQNav from './EQNav'
 import EQLayout from './EQLayout'
 
 
@@ -105,13 +105,11 @@ const StarChatter = () => (
       <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
     </Jumbotron>
     <Row>
-      <Col xs='6'>
+      <Col size={8}>
         <h3 style={{ textAlign: 'center' }}>Most Voted Stars</h3>
         <GetChatters />
       </Col>
-      <Col>
-      </Col>
-      <Col>
+      <Col size={4}>
         <h3 style={{ textAlign: 'center' }}>Add your favorite Star</h3>
         <AddChatter firstName='test' lastName='test' />
       </Col>
