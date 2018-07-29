@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 
 import { Form, Input, InputGroup, InputGroupAddon, Container, Jumbotron } from 'reactstrap'
 
-import EQNav from './EQNav'
+import EQLayout from './EQLayout'
 
 
 const GET_MESSAGES = gql `
@@ -183,19 +183,15 @@ class Sender extends Component {
 
 
 const Chat = () => (
-  <Fragment>
-    <EQNav />
-    <Container>
-      <br />
-      <Jumbotron>
-        <h1 className='display-3'>A Simple Chat Application</h1>
-        <p>An example of Apollo Client using Subscription, Mutation, and Query</p>
-        <p>You can take a look at the source in my github repo</p>
-      </Jumbotron>
-      <h3>About You</h3>
-      <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
-    </Container>
-  </Fragment>
+  <EQLayout>
+    <Jumbotron>
+      <h1 className='display-3'>A Simple Chat Application</h1>
+      <p>An example of Apollo Client using Subscription, Mutation, and Query</p>
+      <p>You can take a look at the source in my github repo</p>
+    </Jumbotron>
+    <h3>About You</h3>
+    <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
+  </EQLayout>
 )
 
 export default Chat

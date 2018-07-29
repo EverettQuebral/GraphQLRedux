@@ -10,6 +10,7 @@ import { Container, Jumbotron } from 'reactstrap'
 
 import AddChatter from './AddChatter'
 import EQNav from './EQNav'
+import EQLayout from './EQLayout'
 
 
 const GET_USERS = gql `
@@ -98,26 +99,22 @@ const GetChatters = () => (
 )
 
 const StarChatter = () => (
-  <Fragment>
-    <EQNav />
-      <Container>
-      <br />
-      <Jumbotron>
-        <h1 className='display-3'>Redux Store + GraphQL + Apollo Client</h1>
-        <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
-      </Jumbotron>
-      <Row>
-        <Col xs='auto'>
-          <h3>Most Voted Stars</h3>
-          <GetChatters />
-        </Col>
-        <Col>
-          <h3>Add your favorite Star</h3>
-          <AddChatter firstName='test' lastName='test' />
-        </Col>
-      </Row>
-    </Container>
-  </Fragment>
+  <EQLayout>
+    <Jumbotron>
+      <h1 className='display-3'>Redux Store + GraphQL + Apollo Client</h1>
+      <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
+    </Jumbotron>
+    <Row>
+      <Col xs='auto'>
+        <h3 style={{ textAlign: 'center' }}>Most Voted Stars</h3>
+        <GetChatters />
+      </Col>
+      <Col>
+        <h3 style={{ textAlign: 'center' }}>Add your favorite Star</h3>
+        <AddChatter firstName='test' lastName='test' />
+      </Col>
+    </Row>
+  </EQLayout>
 )
 
 export default StarChatter
