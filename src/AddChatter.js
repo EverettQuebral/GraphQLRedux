@@ -25,18 +25,18 @@ class AddChatter extends Component {
               <Label>Please add your favorite Star here</Label>
               <FormGroup row>
                 <Label for='first-name'>First Name</Label>
-                <Col sm={10}>
+                <Col>
                   <Input type='text' name='first-name' onChange={ e => this.setState({ firstName: e.target.value })}/>
                 </Col>
               </FormGroup>
               <FormGroup row>
                 <Label for='last-name'>Last Name</Label>
-                <Col sm={10}>
+                <Col>
                   <Input type='text' name='last-name' onChange={ e => this.setState({ lastName: e.target.value })}/>
                 </Col>
               </FormGroup>      
               <FormGroup check row> 
-                <Col sm={{ size:10 }}>
+                <Col>
                   <Input type='submit' name='Submit'/>
                 </Col>
               </FormGroup>

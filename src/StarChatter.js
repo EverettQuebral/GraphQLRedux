@@ -105,9 +105,11 @@ const StarChatter = () => (
       <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
     </Jumbotron>
     <Row>
-      <Col xs='auto'>
+      <Col xs='6'>
         <h3 style={{ textAlign: 'center' }}>Most Voted Stars</h3>
         <GetChatters />
+      </Col>
+      <Col>
       </Col>
       <Col>
         <h3 style={{ textAlign: 'center' }}>Add your favorite Star</h3>
