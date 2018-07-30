@@ -58,6 +58,11 @@ class EQNav extends React.Component {
                     <NavLink href="/chat">Simple Chat</NavLink>
                   </NavItem>
                 </DropdownItem>
+                <DropdownItem>
+                  <NavItem>
+                    <NavLink href="/reactiveui">Reactive UI</NavLink>
+                  </NavItem>
+                </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
                   Reset
