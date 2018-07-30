@@ -8,6 +8,7 @@ import {
 import StarChatter from './StarChatter';
 import ChatApp from './ChatApp'
 import Main from './Main'
+import ReactiveUI from './ReactiveUI'
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -18,6 +19,7 @@ const App = () => (
         <Route exact path='/' component={Main} />
         <Route exact path='/chat' component={ChatApp} />
         <Route exact path='/star' component={StarChatter} />
+        <Route exact path='reactiveui' component={ReactiveUI} />
       </Switch>
     </Fragment>
   </Router>
