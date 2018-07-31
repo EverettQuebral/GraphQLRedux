@@ -19,7 +19,7 @@ const App = () => (
         <Route exact path='/' component={Main} />
         <Route exact path='/chat' component={ChatApp} />
         <Route exact path='/star' component={StarChatter} />
-        <Route exact path='reactiveui' component={ReactiveUI} />
+        <Route exact path='/reactiveui' component={ReactiveUI} />
       </Switch>
     </Fragment>
   </Router>
