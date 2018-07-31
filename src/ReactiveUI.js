@@ -8,6 +8,7 @@ const GET_CONFIG = gql `
 query {
   getConfig{
     type
+		componentId
     content
     props {
       className
@@ -17,6 +18,7 @@ query {
     children {
       type
     	content
+      componentId
       props {
         className
         color
@@ -24,9 +26,15 @@ query {
       children {
         type
       	content
+        componentId
         props {
           className
           color
+        }
+        children {
+          type
+          content
+          componentId
         }
       }
     }
@@ -34,20 +42,23 @@ query {
 }
 `
 
+
 class ReactiveUI extends Component {
   render(){
     return(
-      <Query query={GET_CONFIG}>
-        {({data, error, loading}) => {
-          if (error) return <div>Error</div>
-          if (loading) return <div>Loading</div>
-          return (
-            <EQLayout>
-              {rehydrateJSON(data.getConfig)}
-            </EQLayout>
-          )
-        }}
-      </Query>
+      <EQLayout>
+        <Query query={GET_CONFIG}>
+          {({data, error, loading}) => {
+            if (error) return <div>Error</div>
+            if (loading) return <div>Loading</div>
+            return (
+              <Fragment>
+                {rehydrateJSON(data.getConfig)}
+              </Fragment>
+            )
+          }}
+        </Query>
+      </EQLayout>
     )   
   }
 }
