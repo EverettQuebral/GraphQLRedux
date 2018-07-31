@@ -1,58 +1,54 @@
 import React, { Component, Fragment } from 'react'
 import { Types, rehydrateJSON } from './Types'
 import EQLayout from './EQLayout'
+import gql from 'graphql-tag'
+import { Query } from 'react-apollo'
 
+const GET_CONFIG = gql `
+query {
+  getConfig{
+    type
+    content
+    props {
+      className
+      id
+      src
+    }
+    children {
+      type
+    	content
+      props {
+        className
+        color
+      }
+      children {
+        type
+      	content
+        props {
+          className
+          color
+        }
+      }
+    }
+  }
+}
+`
 
 class ReactiveUI extends Component {
   render(){
-    var child = {
-      "type": "Container",
-      "children" : [
-        {
-          "type": "Jumbotron",
-          "children": [
-            {
-              "type": "Alert",
-              "props": {
-                "color": "primary"
-              },
-              "attributes":{
-                "text": "Alert in RED"
-              }
-            },
-            {
-              "type": "Alert",
-              "props": {
-                "color": "secondary"
-              },
-              "attributes":{
-                "text": "Alert in Gray"
-              }
-            },
-            {
-              "type": "Alert",
-              "props": {
-                "color": "success"
-              },
-              "attributes":{
-                "text": "Alert in Green"
-              }
-            },
-            {
-              "type": "Button",
-              "attributes":{
-                "text": "All you are seeing here are dynamically generated from a JSON Config file"
-              }
-            }
-         ]
-        }
-      ]
-    }
-    return (
-      <EQLayout>
-         {rehydrateJSON(child)}
-      </EQLayout>
-    )
+    return(
+      <Query query={GET_CONFIG}>
+        {({data, error, loading}) => {
+          if (error) return <div>Error</div>
+          if (loading) return <div>Loading</div>
+          return (
+            <EQLayout>
+              {rehydrateJSON(data.getConfig)}
+            </EQLayout>
+          )
+        }}
+      </Query>
+    )   
   }
 }
 
