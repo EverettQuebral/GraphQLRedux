@@ -4,10 +4,6 @@ import EQLayout from './EQLayout'
 
 
 class ReactiveUI extends Component {
-  constructor(props){
-    super(props)
-  }
-
   render(){
     var child = {
       "type": "Container",
