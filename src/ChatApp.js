@@ -187,7 +187,7 @@ const Chat = () => (
     <Jumbotron>
       <h1 className='display-3'>A Simple Chat Application</h1>
       <p>An example of Apollo Client using Subscription, Mutation, and Query</p>
-      <p>You can take a look at the source in my github repo</p>
+      <p>You can take a look at the source in my github repo <a href="https://github.com/EverettQuebral/GraphQLRedux/blob/master/src/ChatApp.js">https://github.com/EverettQuebral/GraphQLRedux/blob/master/src/ChatApp.js</a></p>
     </Jumbotron>
     <h3>About You</h3>
     <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
