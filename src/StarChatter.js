@@ -91,7 +91,7 @@ const GetChatters = () => (
   <Query query={GET_USERS}>
     {({ loading, error, data }) => {
       if (error) return <div>Error</div>
-      if (loading) return <ReactLoading type='spokes' height='50%' width='20%' color="#fff" />
+      if (loading) return <ReactLoading type='spokes' height='60%' width='60%' color='#ddd' />
       return (
         <Chatters chatters={data.getUsers} />
       )

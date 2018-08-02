@@ -51,7 +51,7 @@ class ReactiveUI extends Component {
         <Query query={GET_CONFIG}>
           {({data, error, loading}) => {
             if (error) return <div>Error</div>
-            if (loading) return <ReactLoading type='spokes' height='50%' width='20%' color="#fff" />
+            if (loading) return <ReactLoading type='spokes' height='60%' width='60%' color='#ddd' />
             return (
               <Fragment>
                 {rehydrateJSON(data.getConfig)}
