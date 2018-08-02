@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import { Form, Input, InputGroup, InputGroupAddon, Container, Jumbotron } from 'reactstrap'
 
 import EQLayout from './EQLayout'
-
+import EQLoader from './EQLoader'
 
 const GET_MESSAGES = gql `
   query {
@@ -48,7 +48,7 @@ const MessagesQuery = ({ title }) => (
   <Query query={GET_MESSAGES}>
     {({loading, error, data}) => {
       if (error) return <div> Error </div>
-      if (loading) return <div> Loading </div>
+      if (loading) return <EQLoader />
 
       return (
         <div>

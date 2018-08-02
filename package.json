@@ -30,7 +30,8 @@
     "reactstrap": "^6.3.1",
     "redux": "^4.0.0",
     "styled-components": "^3.3.3",
-    "subscriptions-transport-ws": "^0.9.13"
+    "subscriptions-transport-ws": "^0.9.13",
+    "tachyons-components": "^1.0.0-1"
   },
   "scripts": {
     "start": "react-scripts start",

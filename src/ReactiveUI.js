@@ -3,7 +3,7 @@ import { Types, rehydrateJSON } from './Types'
 import EQLayout from './EQLayout'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
-import ReactLoading from 'react-loading'
+import EQLoader from './EQLoader'
 
 const GET_CONFIG = gql `
 query {
@@ -43,7 +43,6 @@ query {
 }
 `
 
-
 class ReactiveUI extends Component {
   render(){
     return(
@@ -51,7 +50,7 @@ class ReactiveUI extends Component {
         <Query query={GET_CONFIG}>
           {({data, error, loading}) => {
             if (error) return <div>Error</div>
-            if (loading) return <ReactLoading type='spokes' height='60%' width='60%' color='#ddd' />
+            if (loading) return <EQLoader />
             return (
               <Fragment>
                 {rehydrateJSON(data.getConfig)}
