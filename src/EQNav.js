@@ -63,6 +63,11 @@ class EQNav extends React.Component {
                     <NavLink href="/reactiveui">Reactive UI</NavLink>
                   </NavItem>
                 </DropdownItem>
+                <DropdownItem>
+                  <NavItem>
+                    <NavLink href="/advancedui">Advanced Reactive UI</NavLink>
+                  </NavItem>
+                </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
                   Reset
