@@ -8,6 +8,7 @@ import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 import { connect } from 'react-redux'
 import { Container, Jumbotron } from 'reactstrap'
 import { Grid, Row, Col } from '@zendeskgarden/react-grid'
+import ReactLoading from 'react-loading'
 
 import AddChatter from './AddChatter'
 import EQLayout from './EQLayout'
@@ -90,7 +91,7 @@ const GetChatters = () => (
   <Query query={GET_USERS}>
     {({ loading, error, data }) => {
       if (error) return <div>Error</div>
-      if (loading) return <div>Loading</div>
+      if (loading) return <ReactLoading type='spokes' height='50%' width='20%' color="#fff" />
       return (
         <Chatters chatters={data.getUsers} />
       )

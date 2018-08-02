@@ -3,6 +3,7 @@ import { Types, rehydrateJSON } from './Types'
 import EQLayout from './EQLayout'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
+import ReactLoading from 'react-loading'
 
 const GET_CONFIG = gql `
 query {
@@ -50,7 +51,7 @@ class ReactiveUI extends Component {
         <Query query={GET_CONFIG}>
           {({data, error, loading}) => {
             if (error) return <div>Error</div>
-            if (loading) return <div>Loading</div>
+            if (loading) return <ReactLoading type='spokes' height='50%' width='20%' color="#fff" />
             return (
               <Fragment>
                 {rehydrateJSON(data.getConfig)}
