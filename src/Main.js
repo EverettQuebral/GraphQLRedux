@@ -5,7 +5,7 @@ import EQLayout from './EQLayout'
 
 const Intro = () => (
   <Jumbotron>
-    <h1>All About Building Scallable Applications</h1>
+    <h1>All About Building Scalable Applications</h1>
     <p className='lead'>I have been building scallable applications from the ground up for over 2 decades now and would like to share some of those learnings here.</p>
     <p>This is about sharing some of those information and giving an example of the most common challenges specially in using the latest and greatest technology currently available</p>
     <p>I have a couple of Examples now that are focused using React, Redux, GraphQL, Apollo Client</p>
