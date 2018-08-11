@@ -9,6 +9,7 @@ import StarChatter from './StarChatter';
 import ChatApp from './ChatApp'
 import Main from './Main'
 import ReactiveUI from './ReactiveUI'
+import RenderProps from './RenderProps'
 import AdvancedUI from './AdvancedUI'
 
 // import logo from './logo.svg';
@@ -22,6 +23,7 @@ const App = () => (
         <Route exact path='/chat' component={ChatApp} />
         <Route exact path='/star' component={StarChatter} />
         <Route exact path='/reactiveui' component={ReactiveUI} />
+        <Route exact path='/renderprops' component={RenderProps} />
         <Route exact path='/advancedui' component={AdvancedUI} />
       </Switch>
     </Fragment>
