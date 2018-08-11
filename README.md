@@ -20,6 +20,78 @@ Taking a step back and looking the the Clean Architecture from Martin Fowler, we
 
 The application is available here https://eqsystemclient.herokuapp.com
 
+## Component Design
+Before we dig in further, let's discuss the basic entity in our UI which is the **component**.  As a UI Engineer, it will really help if we can just click and drag the component that we want to use and assume that it will just work for our use case.  It might be possible for some very simple use case but some complex application struggle on how to make a component extensible and reusable.  React design philosophy is to favor **composition** over **inheritance** which means that we need to carefully understand the functionality of the component, which brings in another interesting idea that a component should be a **Pure Component** or **Pure Function**.
+
+Let's take a simple example [*not so simple for beginners*] where it can have a state, properties, actions or events that can be re-usable across the board.  Let's say a phone number entry that will check for the format (*i.e. the RegEx for checking the length or size and the type whether numbers or letters) and a way to validate whether the phone number is a valid and a callable phone number.  It looks complex already for supporting only one country but imagine we need to use this component for supporting all known country here on Earth.
+
+Before jumping on the code, let's talk a little bit about two methods that we can solve the problem of re-usability and extendability.  First is the concept of **RenderProps** where in React, we use a prop that will be a function that can do the rendering, while the second is more on the more advanced side, **High Order Components** which will take a component as an input, consume, decorate and do whatever it does and returns another component.  To give more idea about this, let's look at the way that **react-apollo** is using their *<Query>* component and the *graphql* HOC.  The *<Query>* component is using the *renderProps* which means that you can use the component which will do the query to a datasource (this time it's GraphQL) and then exposes properties such as *data*, *error*, *loading*,  *result*, *subscribeToMore*, etc and let the child component to handle how to display the necessary information.  Let's take one example from the app.
+
+```javascript
+const Messages = ({ title, channel }) => (
+  <Fragment>
+    <div>Messages Here</div>
+    <Query query={GET_MESSAGES}>
+      {({ subscribeToMore, data, result }) => (    
+        <MessagesPage {...data}
+          subscribeToNewComments = {() =>
+            subscribeToMore({
+              document: MESSAGE_SUBSCRIBER,
+              variables: { channel: channel },
+              updateQuery: ( prev, { subscriptionData }) => {
+                if (!subscriptionData.data) return prev;
+                const newMessageItem = subscriptionData.data.messageAdded
+                return { messages: [...prev.messages, newMessageItem]}
+              }
+            })
+          }
+        />
+      )}
+    </Query>
+  </Fragment>
+)
+```
+The example above is a complex component where it is *Querying* the data and *subscribing* to more updates.
+
+```javascript
+const GET_MESSAGES = gql `
+  query {
+    messages {
+      author
+      message
+      id
+    }
+  }
+`
+const MESSAGE_SUBSCRIBER = gql `
+  subscription ($channel: String!) {
+    messageAdded(channel: $channel) {
+      message
+      id
+      author
+    }
+  }
+`
+```
+
+Alright I probably lost you there, but let's not focus too much on the detail.  The point there is the **renderProps** where the **<Query>** component allows **<MessagesPage>** component's props **subscribeToNewComments** to call the **subscribeToMore** renderProps of the **<Query>** component.
+
+Now let's take a look at the **graphql** HOC, here's an example 
+```javascript
+const AddUserWithMutation = graphql(ADD_USER, {
+  name: 'addUserMutation',
+  options: {
+    errorPolicy: 'ignore'
+  }
+})(AddUser)
+```
+
+
+
+
+
+
+
 
 # Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
