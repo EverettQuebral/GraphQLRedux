@@ -65,6 +65,11 @@ class EQNav extends React.Component {
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
+                    <NavLink href="/renderprops">Render Props</NavLink>
+                  </NavItem>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavItem>
                     <NavLink href="/advancedui">Advanced Reactive UI</NavLink>
                   </NavItem>
                 </DropdownItem>
