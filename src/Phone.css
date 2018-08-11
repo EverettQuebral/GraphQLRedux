@@ -1,0 +1,13 @@
+.hide {
+  display: none;
+}
+
+.error {
+  display: inline-block;
+  color: red;
+}
+
+.show {
+  display: inline-block;
+  color: blue;
+}
