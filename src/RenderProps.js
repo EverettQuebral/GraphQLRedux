@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Jumbotron } from 'reactstrap'
+import { Jumbotron, Container, Row, Col } from 'reactstrap'
 import EQLayout from './EQLayout'
 import Phone from './Phone'
 
@@ -11,7 +11,7 @@ class RenderProps extends Component {
           <h1 className='display-3'>An example of Render Props Pattern for component Re-Usability</h1>
           <p>Work in progress here</p>
         </Jumbotron>
-        <div>
+        <Container>
           US Phone here
           <Phone text='Enter your phone number'
             label='Enter your phone number'
@@ -22,9 +22,9 @@ class RenderProps extends Component {
             render={({ displayElement }) => (
            <div>{displayElement()}</div>
           )}>
-    </Phone>
-        </div>
-        <div>
+          </Phone>
+        </Container>
+        <Container>
           Israel Phone Here
           <Phone text='הטלפון'
             label='הטלפון'
@@ -35,8 +35,23 @@ class RenderProps extends Component {
             render={({ displayElement }) => (
               <div>{displayElement()}</div>
           )}>
-    </Phone>
-        </div>
+          </Phone>
+        </Container>
+        <Container>
+          Very Loosy Phone Entry Here
+          <Phone
+            render={({ displayElement }) => (
+              <Row>
+                <Col>
+                  <label for='phone-number'>Phone Number</label>
+                </Col>
+                <Col>
+                  <input type='text' />
+                </Col>
+              </Row>
+          )}>
+          </Phone>
+        </Container>
       </EQLayout>
     )
   }

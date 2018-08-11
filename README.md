@@ -86,6 +86,115 @@ const AddUserWithMutation = graphql(ADD_USER, {
 })(AddUser)
 ```
 
+Here's another example, I just came up with a Phone Component that can be re-used for 200+ countries
+```javascript
+class Phone extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      valid: true,
+      error: false
+    }
+  }
+
+  displayElement = () => {
+    return (
+      <Row>
+        <Col>
+          <label for='phone-number' dir={this.props.dir}>{this.props.label}</label>
+        </Col>
+        <Col>
+          <input 
+            className={this.state.error ? 'error' : 'none'} 
+            text='text' 
+            pattern={this.props.pattern} 
+            dir={this.props.dir}
+            onChange={e => {
+              if (e.target.value.length == 0) this.setState({ valid:true, error: false })
+            }}
+            onBlur={e => {
+              const _pattern = new RegExp(this.props.pattern)
+              const _valid = _pattern.test(e.target.value)
+              if (_valid && e.target.value.length > 0) this.setState({ valid: true, error: false })
+              else this.setState({ valid: false, error: true })
+            }}
+          />
+          <span className={this.state.error ? 'error' : 'hide'}>{this.props.errorMessage}
+            <span className={this.state.valid ? 'show' : 'hide'}>{this.props.patternValid}</span>
+          </span>
+        </Col>
+      </Row>
+    )
+  }
+
+  render() {
+    return (
+      <div className='phone'>
+        {this.props.render({ ...this.props, displayElement: this.displayElement })}
+      </div>
+    )
+  }
+}
+```
+
+And how I used it in the RenderProps page here https://eqsystemclient.herokuapp.com/renderprops
+```javascript
+class RenderProps extends Component {
+  render() {
+    return (
+      <EQLayout>
+        <Jumbotron>
+          <h1 className='display-3'>An example of Render Props Pattern for component Re-Usability</h1>
+          <p>Work in progress here</p>
+        </Jumbotron>
+        <Container>
+          US Phone here
+          <Phone text='Enter your phone number'
+            label='Enter your phone number'
+            pattern='^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$'
+            dir='ltr'
+            errorMessage='Please enter a valid phone'
+            patternValid='Valid Phone'
+            render={({ displayElement }) => (
+           <div>{displayElement()}</div>
+          )}>
+          </Phone>
+        </Container>
+        <Container>
+          Israel Phone Here
+          <Phone text='הטלפון'
+            label='הטלפון'
+            pattern='/^0\d([\d]{0,1})([-]{0,1})\d{7}$/'
+            dir='rtl'
+            errorMessage='הזן טלפון חוקי'
+            patternValid='טלפון תקף'
+            render={({ displayElement }) => (
+              <div>{displayElement()}</div>
+          )}>
+          </Phone>
+        </Container>
+        <Container>
+          Very Loosy Phone Entry Here
+          <Phone
+            render={({ displayElement }) => (
+              <Row>
+                <Col>
+                  <label for='phone-number'>Phone Number</label>
+                </Col>
+                <Col>
+                  <input type='text' />
+                </Col>
+              </Row>
+          )}>
+          </Phone>
+        </Container>
+      </EQLayout>
+    )
+  }
+}
+```
+
 
 
 
