@@ -9,10 +9,10 @@ class RenderProps extends Component {
       <EQLayout>
         <Jumbotron>
           <h1 className='display-3'>An example of Render Props Pattern for component Re-Usability</h1>
-          <p>Work in progress here</p>
+          <p>An implementation of a Phone Component that can support 200+ countries with the US Phone, Israel Phone, France and a very loose phone number without any validation</p>
         </Jumbotron>
         <Container>
-          US Phone here
+          <h3>US Phone here</h3>
           <Phone text='Enter your phone number'
             label='Enter your phone number'
             pattern='^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$'
@@ -21,25 +21,40 @@ class RenderProps extends Component {
             errorMessage='Please enter a valid phone'
             patternValid='Valid Phone'
             render={({ displayElement }) => (
-           <div>{displayElement()}</div>
+              <div>{displayElement()}</div>
           )}>
           </Phone>
         </Container>
         <Container>
-          Israel Phone Here
+          <h3>Israel Phone Here</h3>
           <Phone text='הטלפון'
             label='הטלפון'
-            pattern='/^0\d([\d]{0,1})([-]{0,1})\d{7}$/'
+            pattern='/^0(5[^7]|[2-4]|[8-9]|7[0-9])[0-9]{7}$/'
             dir='rtl'
             errorMessage='הזן טלפון חוקי'
             patternValid='טלפון תקף'
+            placeholder='0779999999'
             render={({ displayElement }) => (
               <div>{displayElement()}</div>
           )}>
           </Phone>
         </Container>
         <Container>
-          Very Loosy Phone Entry Here
+          <h3>France Phone Here</h3>
+          <Phone text='Entrez votre numéro de téléphone'
+            label='Entrez votre numéro de téléphone'
+            pattern='^((\+)33|0|0033)[1-9](\d{2}){4}$'
+            dir='ltr'
+            errorMessage="S'il vous plaît entrer un téléphone valide"
+            patternValid='Téléphone valide'
+            placeholder='+33999999999'
+            render={({ displayElement }) => (
+              <div>{displayElement()}</div>
+          )}>
+          </Phone>
+        </Container>
+        <Container>
+          <h3>Very Loosy Phone Entry Here</h3>
           <Phone
             render={({ displayElement }) => (
               <Row>
