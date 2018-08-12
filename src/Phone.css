@@ -11,3 +11,7 @@
   display: inline-block;
   color: blue;
 }
+
+.phone-number {
+  text-align: right;
+}
