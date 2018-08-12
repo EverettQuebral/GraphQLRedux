@@ -11,6 +11,7 @@ class RenderProps extends Component {
           <h1 className='display-3'>An example of Render Props Pattern for component Re-Usability</h1>
           <p>An implementation of a Phone Component that can support 200+ countries with the US Phone, Israel Phone, France and a very loose phone number without any validation</p>
         </Jumbotron>
+        <hr />
         <Container>
           <h3>US Phone here</h3>
           <Phone text='Enter your phone number'
@@ -20,11 +21,16 @@ class RenderProps extends Component {
             placeholder='999-999-9999'
             errorMessage='Please enter a valid phone'
             patternValid='Valid Phone'
-            render={({ displayElement }) => (
-              <div>{displayElement()}</div>
-          )}>
+            render={({ displayElement, displayHeader, displayFooter }) => (
+              <Fragment>
+                {displayHeader('A sample header text to show more flexibility of the component')}
+                {displayElement()}
+                {displayFooter('A sample footer to give an extra message')}
+              </Fragment>
+            )}>
           </Phone>
         </Container>
+        <hr />
         <Container>
           <h3>Israel Phone Here</h3>
           <Phone text='הטלפון'
@@ -34,11 +40,10 @@ class RenderProps extends Component {
             errorMessage='הזן טלפון חוקי'
             patternValid='טלפון תקף'
             placeholder='0779999999'
-            render={({ displayElement }) => (
-              <div>{displayElement()}</div>
-          )}>
+            render={({ displayElement }) => (displayElement())}>
           </Phone>
         </Container>
+        <hr />
         <Container>
           <h3>France Phone Here</h3>
           <Phone text='Entrez votre numéro de téléphone'
@@ -48,12 +53,15 @@ class RenderProps extends Component {
             errorMessage="S'il vous plaît entrer un téléphone valide"
             patternValid='Téléphone valide'
             placeholder='+33999999999'
-            render={({ displayElement }) => (
-              displayElement()
-          )}>
-            <div>Just an additional decorator</div>
+            render={({ displayElement, displayHeader, displayFooter }) => (
+              <Fragment>
+                {displayHeader(<h1>Another type of header</h1>)}
+                {displayElement()}
+              </Fragment>
+            )}>
           </Phone>
         </Container>
+        <hr />
         <Container>
           <h3>Very Loosy Phone Entry Here</h3>
           <Phone>
