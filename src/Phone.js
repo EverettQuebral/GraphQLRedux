@@ -22,6 +22,14 @@ class Phone extends Component {
     if (!_valid && target.length > 0) this.setState({ valid: false, empty: false, error: true })
   }
 
+  displayHeader = (elements) => (
+    <header>{elements}</header>
+  )
+    
+  displayFooter = (elements) => (
+    <footer>{elements}</footer>
+  )
+
   displayElement = () => {
     return (
       <Row>
@@ -51,7 +59,10 @@ class Phone extends Component {
   render() {
     return (
       <div className='phone'>
-        {this.props.render && this.props.render({ ...this.props, displayElement: this.displayElement })}
+        {this.props.render && this.props.render({ ...this.props, 
+          displayHeader: this.displayHeader, 
+          displayFooter: this.displayFooter, 
+          displayElement: this.displayElement })}
         {this.props.children}
       </div>
     )
