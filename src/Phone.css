@@ -15,3 +15,11 @@
 .phone-number {
   text-align: right;
 }
+
+.phone header  {
+  color: darkgray;
+}
+
+.phone footer {
+  color: lightgrey;
+}
