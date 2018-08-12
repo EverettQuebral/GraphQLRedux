@@ -8,8 +8,18 @@ class Phone extends Component {
 
     this.state = {
       valid: true,
-      error: false
+      error: false,
+      empty: true
     }
+  }
+
+  checkValidity = (target) => {
+    const _pattern = new RegExp(this.props.pattern)
+    const _valid = _pattern.test(target)
+
+    if (_valid) this.setState({ valid: true, error: false })
+    if (target.length == 0) this.setState({ valid: true, error: false })
+    if (!_valid && target.length > 0) this.setState({ valid: false, empty: false, error: true })
   }
 
   displayElement = () => {
@@ -20,21 +30,17 @@ class Phone extends Component {
         </Col>
         <Col>
           <input 
-            className={this.state.error ? 'error' : 'none'} 
+            name='phone-number'
+            className='phone-number {this.state.error ? "error" : "none"}' 
             text='text' 
             pattern={this.props.pattern} 
             dir={this.props.dir}
-            onChange={e => {
-              if (e.target.value.length == 0) this.setState({ valid:true, error: false })
-            }}
-            onBlur={e => {
-              const _pattern = new RegExp(this.props.pattern)
-              const _valid = _pattern.test(e.target.value)
-              if (_valid && e.target.value.length > 0) this.setState({ valid: true, error: false })
-              else this.setState({ valid: false, error: true })
-            }}
+            placeholder={this.props.placeholder}
+            onChange={e => this.checkValidity(e.target.value)}
+            onBlur={e => this.checkValidity(e.target.value)}
           />
-          <span className={this.state.error ? 'error' : 'hide'}>{this.props.errorMessage}
+          <span className={this.state.empty ? 'hide' : 'show'}>
+            <span className={this.state.error ? 'error' : 'hide'}>{this.props.errorMessage}</span>
             <span className={this.state.valid ? 'show' : 'hide'}>{this.props.patternValid}</span>
           </span>
         </Col>
