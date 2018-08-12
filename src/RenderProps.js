@@ -1,61 +1,75 @@
 import React, { Component, Fragment } from 'react'
-import { Row, Col } from 'reactstrap'
-import './Phone.css'
+import { Jumbotron, Container, Row, Col } from 'reactstrap'
+import EQLayout from './EQLayout'
+import Phone from './Phone'
 
-class Phone extends Component {
-  constructor(props){
-    super(props)
-
-    this.state = {
-      valid: true,
-      error: false,
-      empty: true
-    }
-  }
-
-  checkValidity = (target) => {
-    const _pattern = new RegExp(this.props.pattern)
-    const _valid = _pattern.test(target)
-
-    if (_valid) this.setState({ valid: true, error: false })
-    if (target.length == 0) this.setState({ valid: true, error: false })
-    if (!_valid && target.length > 0) this.setState({ valid: false, empty: false, error: true })
-  }
-
-  displayElement = () => {
-    return (
-      <Row>
-        <Col>
-          <label for='phone-number' dir={this.props.dir}>{this.props.label}</label>
-        </Col>
-        <Col>
-          <input 
-            name='phone-number'
-            className='phone-number {this.state.error ? "error" : "none"}' 
-            text='text' 
-            pattern={this.props.pattern} 
-            dir={this.props.dir}
-            placeholder={this.props.placeholder}
-            onChange={e => this.checkValidity(e.target.value)}
-            onBlur={e => this.checkValidity(e.target.value)}
-          />
-          <span className={this.state.empty ? 'hide' : 'show'}>
-            <span className={this.state.error ? 'error' : 'hide'}>{this.props.errorMessage}</span>
-            <span className={this.state.valid ? 'show' : 'hide'}>{this.props.patternValid}</span>
-          </span>
-        </Col>
-      </Row>
-    )
-  }
-
+class RenderProps extends Component {
   render() {
     return (
-      <div className='phone'>
-        {this.props.render && this.props.render({ ...this.props, displayElement: this.displayElement })}
-        {this.props.children}
-      </div>
+      <EQLayout>
+        <Jumbotron>
+          <h1 className='display-3'>An example of Render Props Pattern for component Re-Usability</h1>
+          <p>An implementation of a Phone Component that can support 200+ countries with the US Phone, Israel Phone, France and a very loose phone number without any validation</p>
+        </Jumbotron>
+        <Container>
+          <h3>US Phone here</h3>
+          <Phone text='Enter your phone number'
+            label='Enter your phone number'
+            pattern='^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$'
+            dir='ltr'
+            placeholder='999-999-9999'
+            errorMessage='Please enter a valid phone'
+            patternValid='Valid Phone'
+            render={({ displayElement }) => (
+              <div>{displayElement()}</div>
+          )}>
+          </Phone>
+        </Container>
+        <Container>
+          <h3>Israel Phone Here</h3>
+          <Phone text='הטלפון'
+            label='הטלפון'
+            pattern='/^0(5[^7]|[2-4]|[8-9]|7[0-9])[0-9]{7}$/'
+            dir='rtl'
+            errorMessage='הזן טלפון חוקי'
+            patternValid='טלפון תקף'
+            placeholder='0779999999'
+            render={({ displayElement }) => (
+              <div>{displayElement()}</div>
+          )}>
+          </Phone>
+        </Container>
+        <Container>
+          <h3>France Phone Here</h3>
+          <Phone text='Entrez votre numéro de téléphone'
+            label='Entrez votre numéro de téléphone'
+            pattern='^((\+)33|0|0033)[1-9](\d{2}){4}$'
+            dir='ltr'
+            errorMessage="S'il vous plaît entrer un téléphone valide"
+            patternValid='Téléphone valide'
+            placeholder='+33999999999'
+            render={({ displayElement }) => (
+              displayElement()
+          )}>
+            <div>Just an additional decorator</div>
+          </Phone>
+        </Container>
+        <Container>
+          <h3>Very Loosy Phone Entry Here</h3>
+          <Phone>
+            <Row>
+                <Col>
+                  <label for='phone-number'>Phone Number</label>
+                </Col>
+                <Col>
+                  <input name='phone-number' type='text' />
+                </Col>
+              </Row>
+          </Phone>
+        </Container>
+      </EQLayout>
     )
   }
 }
 
-export default Phone
+export default RenderProps
