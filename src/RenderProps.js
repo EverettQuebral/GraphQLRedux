@@ -17,6 +17,7 @@ class RenderProps extends Component {
             label='Enter your phone number'
             pattern='^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$'
             dir='ltr'
+            placeholder='999-999-9999'
             errorMessage='Please enter a valid phone'
             patternValid='Valid Phone'
             render={({ displayElement }) => (
@@ -46,7 +47,7 @@ class RenderProps extends Component {
                   <label for='phone-number'>Phone Number</label>
                 </Col>
                 <Col>
-                  <input type='text' />
+                  <input name='phone-number' type='text' />
                 </Col>
               </Row>
           )}>
