@@ -37,6 +37,7 @@ class RenderProps extends Component {
         <hr />
         <Container>
           <h3>Israel Phone Here</h3>
+          <p>May need a Right To Left keyboard to work properly</p>
           <Alert color='secondary' className='rtl'>
             <Phone text='הטלפון'
               label='הטלפון'
