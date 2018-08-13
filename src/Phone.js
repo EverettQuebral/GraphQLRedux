@@ -31,6 +31,8 @@ class Phone extends Component {
   )
 
   displayElement = () => {
+    const inputClass = 'phone-number ' + (this.state.error ? 'error' : 'none') 
+    console.log('Input Class ', inputClass)
     return (
       <Row>
         <Col>
@@ -39,7 +41,7 @@ class Phone extends Component {
         <Col>
           <input 
             name='phone-number'
-            className='phone-number {this.state.error ? "error" : "none"}' 
+            className={inputClass}
             text='text' 
             pattern={this.props.pattern} 
             dir={this.props.dir}
