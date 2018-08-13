@@ -3,7 +3,11 @@ import { Jumbotron, Container } from 'reactstrap';
 import EQLayout from './EQLayout'
 
 const AstroImage = () => (
-  <img className='astroimage' src='https://c1.staticflickr.com/5/4450/37959490282_9522369451_o.png' />
+  <Fragment>
+    <hr />
+    <img className='astroimage' src='https://c1.staticflickr.com/5/4450/37959490282_9522369451_o.png' />
+    <hr />
+  </Fragment>
 )
 
 const Intro = () => (
