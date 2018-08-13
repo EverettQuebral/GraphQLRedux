@@ -94,11 +94,35 @@ class Phone extends Component {
 
     this.state = {
       valid: true,
-      error: false
+      error: false,
+      empty: true
     }
   }
 
+  checkValidity = (target) => {
+    const _pattern = new RegExp(this.props.pattern)
+    const _valid = _pattern.test(target)
+
+    // if length is zero, should not display anything
+    if (target.length == 0) this.setState({ valid: true, error: false, empty: true })
+    else {
+      // if the phone is not empty, then check for the pattern for validity
+      if (_valid) this.setState({ valid: true, error: false, empty: false })
+      else if (!_valid && target.length > 0) this.setState({ valid: false, empty: false, error: true })
+    }
+  }
+
+  displayHeader = (elements) => (
+    <header>{elements}</header>
+  )
+    
+  displayFooter = (elements) => (
+    <footer>{elements}</footer>
+  )
+
   displayElement = () => {
+    const inputClass = 'phone-number ' + (this.state.error ? 'error' : 'none') 
+    console.log('Input Class ', inputClass)
     return (
       <Row>
         <Col>
@@ -106,21 +130,17 @@ class Phone extends Component {
         </Col>
         <Col>
           <input 
-            className={this.state.error ? 'error' : 'none'} 
+            name='phone-number'
+            className={inputClass}
             text='text' 
             pattern={this.props.pattern} 
             dir={this.props.dir}
-            onChange={e => {
-              if (e.target.value.length == 0) this.setState({ valid:true, error: false })
-            }}
-            onBlur={e => {
-              const _pattern = new RegExp(this.props.pattern)
-              const _valid = _pattern.test(e.target.value)
-              if (_valid && e.target.value.length > 0) this.setState({ valid: true, error: false })
-              else this.setState({ valid: false, error: true })
-            }}
+            placeholder={this.props.placeholder}
+            onChange={e => this.checkValidity(e.target.value)}
+            onBlur={e => this.checkValidity(e.target.value)}
           />
-          <span className={this.state.error ? 'error' : 'hide'}>{this.props.errorMessage}
+          <span className={this.state.empty ? 'hide' : 'show'}>
+            <span className={this.state.error ? 'error' : 'hide'}>{this.props.errorMessage}</span>
             <span className={this.state.valid ? 'show' : 'hide'}>{this.props.patternValid}</span>
           </span>
         </Col>
@@ -131,7 +151,11 @@ class Phone extends Component {
   render() {
     return (
       <div className='phone'>
-        {this.props.render({ ...this.props, displayElement: this.displayElement })}
+        {this.props.render && this.props.render({ ...this.props, 
+          displayHeader: this.displayHeader, 
+          displayFooter: this.displayFooter, 
+          displayElement: this.displayElement })}
+        {this.props.children}
       </div>
     )
   }
@@ -145,49 +169,83 @@ class RenderProps extends Component {
     return (
       <EQLayout>
         <Jumbotron>
-          <h1 className='display-3'>An example of Render Props Pattern for component Re-Usability</h1>
-          <p>Work in progress here</p>
+          <h1 className='display-3'>A Render Props Pattern for Component Re-Usability</h1>
+          <p>An implementation of a Phone Component that can support 200+ countries with the US Phone, Israel Phone, France and a very loose phone number without any validation</p>
+          <h4>Below are different styles and rendering of the component while using the validation, pattern matching and behaviours</h4>
         </Jumbotron>
-        <Container>
-          US Phone here
-          <Phone text='Enter your phone number'
-            label='Enter your phone number'
-            pattern='^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$'
-            dir='ltr'
-            errorMessage='Please enter a valid phone'
-            patternValid='Valid Phone'
-            render={({ displayElement }) => (
-           <div>{displayElement()}</div>
-          )}>
-          </Phone>
+        <hr />
+        <Container color='primary'>
+          <h3>US Phone here</h3>
+          <Alert color='primary'>
+            <Phone text='Enter your phone number'
+              label='Enter your phone number'
+              pattern='^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$'
+              dir='ltr'
+              placeholder='999-999-9999'
+              errorMessage='Please enter a valid phone'
+              patternValid='Valid Phone'
+              render={({ displayElement, displayHeader, displayFooter }) => (
+                <Fragment>
+                  {displayHeader('A sample header text to show more flexibility of the component')}
+                  {displayElement()}
+                  {displayFooter('A sample footer to give an extra message')}
+                </Fragment>
+              )}>
+            </Phone>
+          </Alert>
         </Container>
+        <hr />
         <Container>
-          Israel Phone Here
-          <Phone text='הטלפון'
-            label='הטלפון'
-            pattern='/^0\d([\d]{0,1})([-]{0,1})\d{7}$/'
-            dir='rtl'
-            errorMessage='הזן טלפון חוקי'
-            patternValid='טלפון תקף'
-            render={({ displayElement }) => (
-              <div>{displayElement()}</div>
-          )}>
-          </Phone>
+          <h3>Israel Phone Here</h3>
+          <p>May need a Right To Left keyboard to work properly</p>
+          <Alert color='secondary' className='rtl'>
+            <Phone text='הטלפון'
+              label='הטלפון'
+              pattern='/^0(5[^7]|[2-4]|[8-9]|7[0-9])[0-9]{7}$/'
+              dir='rtl'
+              errorMessage='הזן טלפון חוקי'
+              patternValid='טלפון תקף'
+              placeholder='0779999999'
+              render={({ displayElement }) => (displayElement())}>
+              <p>זוהי רק דוגמה לעיצוב, האימות עשוי לפעול כצפוי, שכן המטרה היא להציג רק את הפריסה השונה שניתן לתמוך בה</p>
+            </Phone>
+          </Alert>
         </Container>
+        <hr />
         <Container>
-          Very Loosy Phone Entry Here
-          <Phone
-            render={({ displayElement }) => (
+          <h3>France Phone Here</h3>
+          <Alert color='success'>
+            <Phone text='Entrez votre numéro de téléphone'
+              label='Entrez votre numéro de téléphone'
+              pattern='^((\+)33|0|0033)[1-9](\d{2}){4}$'
+              dir='ltr'
+              errorMessage="S'il vous plaît entrer un téléphone valide"
+              patternValid='Téléphone valide'
+              placeholder='+33999999999'
+              render={({ displayElement, displayHeader }) => (
+                <Fragment>
+                  {displayHeader(<h1>Another type of header</h1>)}
+                  {displayElement()}
+                </Fragment>
+              )}>
+            </Phone>
+          </Alert>
+        </Container>
+        <hr />
+        <Container>
+          <h3>Very Loosy Phone Entry Here</h3>
+          <Alert  color='danger'>
+            <Phone>
               <Row>
-                <Col>
-                  <label for='phone-number'>Phone Number</label>
-                </Col>
-                <Col>
-                  <input type='text' />
-                </Col>
-              </Row>
-          )}>
-          </Phone>
+                  <Col>
+                    <label for='phone-number'>Phone Number</label>
+                  </Col>
+                  <Col>
+                    <input name='phone-number' type='text' />
+                  </Col>
+                </Row>
+            </Phone>
+          </Alert>
         </Container>
       </EQLayout>
     )
