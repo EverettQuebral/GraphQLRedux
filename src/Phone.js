@@ -17,9 +17,13 @@ class Phone extends Component {
     const _pattern = new RegExp(this.props.pattern)
     const _valid = _pattern.test(target)
 
-    if (_valid) this.setState({ valid: true, error: false })
-    if (target.length == 0) this.setState({ valid: true, error: false })
-    if (!_valid && target.length > 0) this.setState({ valid: false, empty: false, error: true })
+    // if length is zero, should not display anything
+    if (target.length == 0) this.setState({ valid: true, error: false, empty: true })
+    else {
+      // if the phone is not empty, then check for the pattern for validity
+      if (_valid) this.setState({ valid: true, error: false, empty: false })
+      else if (!_valid && target.length > 0) this.setState({ valid: false, empty: false, error: true })
+    }
   }
 
   displayHeader = (elements) => (
