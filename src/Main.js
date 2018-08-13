@@ -2,6 +2,9 @@ import React, { Fragment } from 'react'
 import { Jumbotron, Container } from 'reactstrap';
 import EQLayout from './EQLayout'
 
+const AstroImage = () => (
+  <img className='astroimage' src='https://c1.staticflickr.com/5/4450/37959490282_9522369451_o.png' />
+)
 
 const Intro = () => (
   <Jumbotron>
@@ -18,6 +21,7 @@ const Intro = () => (
 const Main = () => (
   <EQLayout>
     <Intro />
+    <AstroImage />
     <div>
       <h4>React GraphQL Apollo Client and Redux</h4>
       <hr />
@@ -36,7 +40,7 @@ const Main = () => (
       <hr />
       <p>Combining Apollo Client and Redux is difficult if not designed properly. Both have features and utilities to do almost exactly the same in terms of controlling and managing the state of the application. This is critical because of the Core Principle of Redux where the flow of information is uni-directional by using a dispatcher and action to change the state.</p>
       <p>Taking a step back and looking the the Clean Architecture from Martin Fowler, we need to understand what is the responsibility of Redux and GraphQL (Apollo) to make sure that the two have a clear boundaries of their responsibilty. This is discussed more by Robin Wieruch and described as the Togetherness Level. I won't go into the details but in this particular application, I have chosen the Togetherness Level 2 where there's a level of interaction on how Apollo and Redux can co-exist together</p>
-      <p>The application is available here https://eqsystemclient.herokuapp.com</p>
+      <p>The application is available here <a href='https://eqsystemclient.herokuapp.com'>https://eqsystemclient.herokuapp.com</a></p>
     </div>
   </EQLayout>
 )

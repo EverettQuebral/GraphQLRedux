@@ -13,7 +13,7 @@ import RenderProps from './RenderProps'
 import AdvancedUI from './AdvancedUI'
 
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 
 const App = () => (
   <Router>
