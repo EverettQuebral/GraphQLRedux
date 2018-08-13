@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Jumbotron, Container, Row, Col, Alert } from 'reactstrap'
 import EQLayout from './EQLayout'
 import Phone from './Phone'
+import { rejectLimit } from 'async';
 
 class RenderProps extends Component {
   render() {
@@ -36,7 +37,7 @@ class RenderProps extends Component {
         <hr />
         <Container>
           <h3>Israel Phone Here</h3>
-          <Alert color='secondary'>
+          <Alert color='secondary' className='rtl'>
             <Phone text='הטלפון'
               label='הטלפון'
               pattern='/^0(5[^7]|[2-4]|[8-9]|7[0-9])[0-9]{7}$/'
@@ -45,6 +46,7 @@ class RenderProps extends Component {
               patternValid='טלפון תקף'
               placeholder='0779999999'
               render={({ displayElement }) => (displayElement())}>
+              <p>זוהי רק דוגמה לעיצוב, האימות עשוי לפעול כצפוי, שכן המטרה היא להציג רק את הפריסה השונה שניתן לתמוך בה</p>
             </Phone>
           </Alert>
         </Container>
