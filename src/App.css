@@ -41,7 +41,7 @@
 
 div.astroimages {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, minmax(130px, 1fr));
   grid-gap: 20px;
   justify-items: center;
   align-items: center;
