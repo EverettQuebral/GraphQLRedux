@@ -38,3 +38,44 @@
   text-align: right;
   direction: rtl;
 }
+
+div.astroimages {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+  justify-items: center;
+  align-items: center;
+
+}
+
+div.astroimages .grid-items {
+  padding: 2px;
+  text-align:center;
+  justify-self: center;
+}
+
+div.astroimages .grid-items img {
+  box-shadow: 5px 5px 5x darkgray;
+  border-radius: 0.8em;
+  box-shadow: 10px 10px 5px lightgray;
+}
+
+div.astroimages .grid-items p {
+  margin-top: 10px;
+}
+
+.astroimages .grid-items img:hover {
+  box-shadow: 1px 1px 1px whitesmoke;
+  margin: 4px -4px -4px 4px;
+}
+
+@keyframes imageHover {
+  from { 
+
+  }
+  to { 
+    box-shadow: 1px 1px 1px whitesmoke;
+    margin: 4px -4px -4px 4px; 
+  }
+
+}

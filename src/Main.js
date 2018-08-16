@@ -10,6 +10,77 @@ const AstroImage = () => (
   </Fragment>
 )
 
+const ImagesFromFlickr = [
+  {
+    url: 'https://c2.staticflickr.com/2/1815/30209781128_0d887a7de5_n.jpg',
+    original: 'https://c2.staticflickr.com/2/1815/30209781128_64a0b0be80_o.png',
+    title: 'Western Veil Nebula',
+    description: 'Can you see the witch? Also known as the witchbroom nebula or the western veil nebula, I prefer the later.It is a remnant of a supernova that exploded around 6,000 BC and the distance is about 1,470 light years.'
+  },
+  {
+    url: 'https://c1.staticflickr.com/5/4522/37914735325_b1f4a4ddeb_n.jpg',
+    original: 'https://c1.staticflickr.com/5/4522/37914735325_934b9551e8_o.png',
+    title: 'The Heart Nebula',
+    description: 'The Heart Nebula'
+  },
+  {
+    url: 'https://c1.staticflickr.com/5/4450/37959490282_c1f5a93b85_n.jpg',
+    original: 'https://c1.staticflickr.com/5/4450/37959490282_9522369451_o.png',
+    title: 'The Heart Nebula',
+    description: 'The Rosette Nebula'
+  },
+  {
+    url: 'https://c1.staticflickr.com/5/4524/27144549229_7d156dcc2c_n.jpg',
+    original: 'https://c1.staticflickr.com/5/4524/27144549229_3fbc2b4c2d_o.png',
+    title: 'The Cgynus Nebula',
+    description: 'The Cygnus Wall'
+  },
+  {
+    url: 'https://c1.staticflickr.com/5/4542/24000329607_fc31260a70_n.jpg',
+    original: 'https://c1.staticflickr.com/5/4542/24000329607_e298752f0e_o.png',
+    title: 'The Pelican Nebula',
+    description: 'The Pelican Nebula'
+  },
+  {
+    url: 'https://c1.staticflickr.com/5/4514/36869963113_8c0a1ebac5_n.jpg',
+    original: 'https://c1.staticflickr.com/5/4514/36869963113_381362103f_o.png',
+    title: 'The Elephant Trunk Nebula',
+    description: 'The The Elephant Trunk Nebula'
+  },
+  {
+    url: 'https://c1.staticflickr.com/5/4600/39162820891_99715ed921_n.jpg',
+    original: 'https://c1.staticflickr.com/5/4600/39162820891_e10113f62d_o.png',
+    title: 'The Horsehead Nebula',
+    description: 'The Horsehead Nebula'
+  },
+  {
+    url: 'https://c1.staticflickr.com/5/4303/35738375021_47f8de599f_n.jpg',
+    original: 'https://c1.staticflickr.com/5/4303/35738375021_06f23879b0_o.png',
+    title: 'The Andromeda Galaxy',
+    description: 'The Andromeda Galaxy'
+  },
+  {
+    url: 'https://c1.staticflickr.com/5/4556/38308951604_56c33c4456_n.jpg',
+    original: 'https://c1.staticflickr.com/5/4556/38308951604_529dfe5528_o.png',
+    title: 'The Jellyfish Nebula',
+    description: 'The Jellyfish Nebula'
+  }
+]
+
+const OneImage = ({ imageInfo }) => (
+  <div className='grid-items'>
+    <a href={imageInfo.original}>
+      <img src={imageInfo.url} />
+      <p>{imageInfo.title}</p>
+    </a>
+  </div>
+)
+const AstroImages = ({ images }) => (
+  <div className='astroimages'>
+  { images.map( (url, original, title) => <OneImage imageInfo={url}/>)}
+  </div>
+)
+
 const Intro = () => (
   <Jumbotron>
     <h1>All About Building Scalable Applications</h1>
@@ -25,7 +96,7 @@ const Intro = () => (
 const Main = () => (
   <EQLayout>
     <Intro />
-    <AstroImage />
+    <AstroImages images={ImagesFromFlickr}/>
     <div>
       <h4>React GraphQL Apollo Client and Redux</h4>
       <hr />
