@@ -1,0 +1,42 @@
+div.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+div .grid .item {
+  flex-grow: 1;
+  flex-basis: auto;
+  align-self: flex-start;
+}
+
+div.chatter-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+div.chatter-list .grid-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0 10px 0;
+  box-sizing: border-box;
+  background-color: #ddd;
+  margin-top: 2px;
+}
+
+div.chatter-list .grid-column {
+  justify-content: center;
+  flex-wrap: wrap;
+  min-width: 150px;
+  justify-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+div.chatter-list .grid-column > span {
+  overflow: hidden;
+}
