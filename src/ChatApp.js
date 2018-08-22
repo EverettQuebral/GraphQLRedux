@@ -96,9 +96,6 @@ const Messages = ({ title }) => (
               updateQuery: ( prev, { subscriptionData }) => {
                 if (!subscriptionData.data) return prev;
                 const newMessageItem = subscriptionData.data.messageAdded
-                console.log("New Mesage ", newMessageItem)
-
-                console.log(prev)
                 return { messages: [...prev.messages, newMessageItem]}
               }
             })
