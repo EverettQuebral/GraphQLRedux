@@ -8,8 +8,6 @@ import {
   EQInput
 } from './EQComponents'
 
-import FloatingLabel from 'floating-label-react'
-
 class AdvancedUI extends Component {
   render() {
     return (
