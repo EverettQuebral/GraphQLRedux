@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react'
 import gql from 'graphql-tag'
 import { Query, Mutation } from 'react-apollo'
-// import { Row, Col } from '@zendeskgarden/react-grid'
-import { Button } from '@zendeskgarden/react-buttons'
-import { Label } from '@zendeskgarden/react-textfields'
 import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 import { connect } from 'react-redux'
 import { Container, Jumbotron } from 'reactstrap'
-import { Grid, Row, Col } from '@zendeskgarden/react-grid'
 import ReactLoading from 'react-loading'
+
+import './StarChatter.css'
+
 
 import AddChatter from './AddChatter'
 import EQLayout from './EQLayout'
@@ -33,7 +32,7 @@ mutation ($id: String!) {
 }
 `
 const ChattersList = ({ chatters, selectedChatterIds }) => (
-  <Container>
+  <Container className='chatter-list'>
     { chatters.map( (chatter) => {
       const isSelected = selectedChatterIds.includes(chatter.id)
       const rowClassName = ['row']
@@ -41,11 +40,17 @@ const ChattersList = ({ chatters, selectedChatterIds }) => (
         rowClassName.push('row_selected')
       }
       return (
-        <Row className={rowClassName.join(' ')} key={chatter.id} alignItems='center' style={{ minHeight: '4em', backgroundColor: 'lightgray', marginBottom: 8}}>
-          <Col><SelectedContainer id={chatter.id} isSelected={isSelected} /></Col>
-          <Col><Label><a href={chatter.id}>{chatter.first_name} {chatter.last_name}</a></Label></Col>
-          <Col><Star id={chatter.id} /></Col>
-        </Row>
+        <div className='grid-row' key={chatter.id}>
+          <div className='grid-column'>
+            <SelectedContainer id={chatter.id} isSelected={isSelected} />
+          </div>
+          <div className='grid-column'>
+            <span>{chatter.first_name} {chatter.last_name}</span>
+          </div>
+          <div className='grid-column'>
+            <Star id={chatter.id}/>
+          </div>
+        </div>
       )
     })}
   </Container>
@@ -79,10 +84,10 @@ const Star = ({ id }) => (
     console.log('completed')
   }}>
     {starUser => (
-      <Button type='button' onClick={starUser}>
+      <button type='button' onClick={starUser}>
       Star
       {console.log('starred')}
-    </Button>
+    </button>
     )}
   </Mutation>
 )
@@ -104,18 +109,18 @@ const StarChatter = () => (
     <Jumbotron>
       <h1 className='display-3'>Redux Store + GraphQL + Apollo Client</h1>
       <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
-      <p>You can take a look at the source of this application here <a href='https://github.com/EverettQuebral/GraphQLRedux/blob/master/src/StarChatter.js'>https://github.com/EverettQuebral/GraphQLRedux/blob/master/src/StarChatter.js</a></p>
+      <p>You can take a look at the source of this application here <a href='https://github.com/EverettQuebral/GraphQLRedux/blob/master/src/StarChatter.js'>StarChatter.js</a></p>
     </Jumbotron>
-    <Row>
-      <Col size={8}>
+    <div className='grid'>
+      <div className='grid-item'>
         <h3 style={{ textAlign: 'center' }}>Most Voted Stars</h3>
         <GetChatters />
-      </Col>
-      <Col size={4}>
+      </div>
+      <div className='grid-item'>
         <h3 style={{ textAlign: 'center' }}>Add your favorite Star</h3>
         <AddChatter firstName='test' lastName='test' />
-      </Col>
-    </Row>
+      </div>
+    </div>
   </EQLayout>
 )
 
