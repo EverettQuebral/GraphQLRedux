@@ -40,18 +40,19 @@
 }
 
 div.astroimages {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(130px, 1fr));
-  grid-gap: 20px;
-  justify-items: center;
+  display: flex;
   align-items: center;
-
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 div.astroimages .grid-items {
-  padding: 2px;
+  padding: 10px;
   text-align:center;
   justify-self: center;
+  box-sizing: content-box;
 }
 
 div.astroimages .grid-items img {
@@ -78,4 +79,13 @@ div.astroimages .grid-items p {
     margin: 4px -4px -4px 4px; 
   }
 
+}
+
+div.input-group {
+  display: block;
+  margin: 10px 10px 10px 0;
+}
+
+div.input-group > label {
+  margin-right: 15px;
 }
