@@ -25,7 +25,7 @@
     "react-loading": "^2.0.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^1.1.5",
     "react-sticky-footer": "0.1.0-rc3",
     "react-transition-group": "^1.2.1",
     "reactstrap": "^6.3.1",
