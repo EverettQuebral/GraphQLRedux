@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.5.0",
+    "@material-ui/icons": "^2.0.2",
     "@zendeskgarden/react-buttons": "^3.3.9",
     "@zendeskgarden/react-grid": "^1.1.6",
     "@zendeskgarden/react-textfields": "^3.2.10",
@@ -33,7 +35,8 @@
     "redux": "^4.0.0",
     "styled-components": "^3.3.3",
     "subscriptions-transport-ws": "^0.9.13",
-    "tachyons-components": "^1.0.0-1"
+    "tachyons-components": "^1.0.0-1",
+    "typeface-roboto": "0.0.54"
   },
   "scripts": {
     "start": "react-scripts start",

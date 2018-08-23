@@ -9,6 +9,6 @@ export const EQFormGroup = () => (
   <div>{this.props.children}</div>
 )
 
-export const EQInput = props => (
-  <input name='test' />
+export const EQInput = ({ props }) => (
+  <input placeholder={props.placeholder}/>
 )
