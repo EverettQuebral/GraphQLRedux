@@ -1,0 +1,44 @@
+input .error {
+  border-color: red;
+  color: red;
+}
+
+input .validated {
+  border-color: black;
+  color: red;
+}
+
+/* form > div {
+  position: relative;
+}
+
+form > div > label {
+  position: absolute;
+}
+
+input:focus + label {
+  color: blue;
+}
+
+form.go-bottom label {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: 0.2s;
+}
+
+form.go-bottom input:focus + label {
+  top: 100%;
+  margin-top: -16px;
+  font-size: 0.8em;
+}
+
+form input:valid {
+  background: white;
+} */
+
+form input {
+  height: 1.8em;
+}
