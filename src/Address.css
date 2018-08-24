@@ -1,0 +1,16 @@
+.address .entry-field label {
+  width: 150px;
+}
+
+.address .entry-field input {
+  width: 200px;
+  border: 1px solid black;
+}
+
+.address .entry-field input .error {
+  border-color: red;
+}
+
+.address .entry-field input .valid {
+  border-color: green;
+}
