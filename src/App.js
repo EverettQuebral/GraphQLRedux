@@ -14,7 +14,7 @@ import AdvancedUI from './AdvancedUI'
 import HOC from './HOC'
 
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 
 const App = () => (
   <Router>
