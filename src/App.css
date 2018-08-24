@@ -39,53 +39,12 @@
   direction: rtl;
 }
 
-div.astroimages {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 
-div.astroimages .grid-items {
-  padding: 10px;
-  text-align:center;
-  justify-self: center;
-  box-sizing: content-box;
-}
-
-div.astroimages .grid-items img {
-  box-shadow: 5px 5px 5x darkgray;
-  border-radius: 0.8em;
-  box-shadow: 10px 10px 5px lightgray;
-}
-
-div.astroimages .grid-items p {
-  margin-top: 10px;
-}
-
-.astroimages .grid-items img:hover {
-  box-shadow: 1px 1px 1px whitesmoke;
-  margin: 4px -4px -4px 4px;
-}
-
-@keyframes imageHover {
-  from { 
-
-  }
-  to { 
-    box-shadow: 1px 1px 1px whitesmoke;
-    margin: 4px -4px -4px 4px; 
-  }
-
-}
-
-div.input-group {
+/* div.input-group {
   display: block;
   margin: 10px 10px 10px 0;
 }
 
 div.input-group > label {
   margin-right: 15px;
-}
+}  */
