@@ -77,10 +77,9 @@ const OneImage = ({ imageInfo }) => (
       </a>
     </div>
     <div className='image-back'>
-      <h5>{imageInfo.title}</h5>
-      <p>{imageInfo.description}</p>
       <a href={imageInfo.original}>
-        Full Size Image
+        <h5>{imageInfo.title}</h5>
+        <p>{imageInfo.description}</p>
       </a>
     </div>
   </div>
