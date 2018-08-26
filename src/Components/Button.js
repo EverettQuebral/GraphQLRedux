@@ -1,17 +1,19 @@
 import React from 'react'
+import './Button.css'
 
 const _style = {
-    color: 'blue',
-    backgroundColor: 'red'
+    color: 'darkblue',
+    backgroundColor: 'lightgray'
 }
 
-const Button = ({ style, children, name, buttonState, onClick }) => (
+const Button = ({ style, children, name, props, buttonState, onClick }) => (
   <button
+    className='button'
     style={ style || _style }
     name={name}
     onClick={onClick}
   >
-    { buttonState === true ? children : 'click again' }
+    { buttonState === true ? props : children }
   </button>
 )
 
