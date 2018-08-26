@@ -40,7 +40,7 @@ const errorStyle = {
     const inputClass = (this.state.error ? 'error' : 'validated')
     return (
       <div className='entry-field'>
-      <label for={this.props.name}>{this.props.label}</label>
+      <label htmlFor={this.props.name}>{this.props.label}</label>
         <input 
           required
           className={inputClass}
