@@ -11,8 +11,7 @@ const Button = ({ style, children, name, buttonState, onClick }) => (
     name={name}
     onClick={onClick}
   >
-    { console.log({ buttonState }) }
-    { children } { buttonState }
+    { buttonState === 'true' ? children : 'Click Again' }
   </button>
 )
 
