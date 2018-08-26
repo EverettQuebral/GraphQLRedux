@@ -16,7 +16,7 @@ const ButtonEnhanced = compose(
     }
   }),
   withProps({ 'name' : 'Testing', 
-    'style': { 'color': 'white', 'backgroundColor': 'blue'} 
+    'style': { 'color': 'darkgray', 'backgroundColor': 'lightblue'} 
   }),
   debug,
   // withHandlers({
@@ -32,13 +32,19 @@ const HOC = () => (
       <h4>For maximizing Component Reuse, minimize code</h4>
       <p>An implementation of an Address Component that can support 200+ countries with a different services to call on validating the Address, giving an extra help of using Auto Detection, Auto Suggest and much more depending on the capability fro a particular country</p>
       <p>Work in Progress</p>
-      <Button variant="contained" color="primary">
-        Base Button Here
-      </Button>
     </Jumbotron>
     <Container>
+      <h4>Button Example</h4>
+      <hr />
+      <h5>Base Button</h5>
+      <p>A button that doesn't have anything state or handlers or properties</p>
+      <Button>Button</Button> 
+      <hr />
+      <h5>Enhanced Button</h5>
+      <p>Button using the Base Button withProps, withState, withHandler</p>
+      <ButtonEnhanced props='Click to test state'>HOC Button with State</ButtonEnhanced>
+      <hr />
       <Address name='us-address' submit='Submit Address' />
-      <ButtonEnhanced>HOC Button withState</ButtonEnhanced>
     </Container>
   </EQLayout>
 )
