@@ -38,7 +38,7 @@ const HOC = () => (
     </Jumbotron>
     <Container>
       <Address name='us-address' submit='Submit Address' />
-      <ButtonEnhanced>HOC Button Here</ButtonEnhanced>
+      <ButtonEnhanced>HOC Button withState</ButtonEnhanced>
     </Container>
   </EQLayout>
 )
