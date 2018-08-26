@@ -5,14 +5,14 @@ const _style = {
     backgroundColor: 'red'
 }
 
-const Button = ({ props, state, onClick }) => (
+const Button = ({ style, children, name, buttonState, onClick }) => (
   <button
-    style={props.style || _style}
-    name={props.name}
+    style={ style || _style }
+    name={name}
     onClick={onClick}
   >
-    { console.log({ state }) }
-    { props.children && props.children }
+    { console.log({ buttonState }) }
+    { children } { buttonState }
   </button>
 )
 
