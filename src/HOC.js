@@ -15,15 +15,9 @@ const ButtonEnhanced = compose(
       clickHandler(buttonState => !buttonState)
     }
   }),
-  withProps({ props : {
-    name: 'submit',
-    type: 'submit',
-    children: 'Submit',
-    style: {
-      color: 'white',
-      backgroundColor: 'blue'
-    }
-  }}),
+  withProps({ 'name' : 'Testing', 
+    'style': { 'color': 'white', 'backgroundColor': 'blue'} 
+  }),
   debug,
   // withHandlers({
   //   onClick: ({clickHandler}) => () => clickHandler(buttonState => !buttonState)
@@ -39,12 +33,12 @@ const HOC = () => (
       <p>An implementation of an Address Component that can support 200+ countries with a different services to call on validating the Address, giving an extra help of using Auto Detection, Auto Suggest and much more depending on the capability fro a particular country</p>
       <p>Work in Progress</p>
       <Button variant="contained" color="primary">
-        Hello There
+        Base Button Here
       </Button>
     </Jumbotron>
     <Container>
       <Address name='us-address' submit='Submit Address' />
-      <ButtonEnhanced />
+      <ButtonEnhanced>HOC Button Here</ButtonEnhanced>
     </Container>
   </EQLayout>
 )
