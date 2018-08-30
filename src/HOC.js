@@ -4,11 +4,9 @@ import EQLayout from './EQLayout'
 
 
 import { compose, withState, withHandlers, withProps, withStateHandlers } from 'recompose'
-import { Button, Form } from './Components/Atoms'
+import { Button, Form, Row, Col, Grid } from './Components/Atoms'
 import { Address } from './Components/Molecules'
-
-// import { Onboarding } from './Components/Organisms'
-import {Login, Onboarding } from './Components/Organisms'
+import { Login, Onboarding } from './Components/Organisms'
 
 // const debug = withProps(console.log)
 const ButtonEnhancedOne = compose(
@@ -79,10 +77,17 @@ const HOC = () => (
       <hr />
       <Address name='us-address' submit='Submit Address' />
       <hr />
-      <h5>Onboarding Flow</h5>
-      <Onboarding />
-      <h5>Login Flow</h5>
-      <Login />
+      
+      <Row test='test'>
+        <Col>
+          <h5>Onboarding Flow</h5>
+          <Onboarding />
+        </Col>
+        <Col>
+          <h5>Login Flow</h5>
+          <Login />
+        </Col>
+      </Row>
     </Container>
   </EQLayout>
 )
