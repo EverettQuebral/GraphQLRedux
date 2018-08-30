@@ -2,7 +2,7 @@ import Button from './Button'
 import Form from './Form'
 import Input from './Input'
 import Row from './Row'
-import Col from './Col'
+import Column from './Column'
 import Grid from './Grid'
 
 export {
@@ -10,6 +10,6 @@ export {
   Form,
   Input,
   Row,
-  Col,
+  Column,
   Grid
 }

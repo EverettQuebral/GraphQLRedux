@@ -4,7 +4,7 @@ import EQLayout from './EQLayout'
 
 
 import { compose, withState, withHandlers, withProps, withStateHandlers } from 'recompose'
-import { Button, Form, Row, Col, Grid } from './Components/Atoms'
+import { Button, Form, Row, Col, Grid, Column } from './Components/Atoms'
 import { Address } from './Components/Molecules'
 import { Login, Onboarding } from './Components/Organisms'
 
@@ -75,18 +75,19 @@ const HOC = () => (
       <p>Buttons that updates the state via handlers</p>
       <ButtonEnhancedTwo />
       <hr />
+      <h5>Conventional React Component</h5>
       <Address name='us-address' submit='Submit Address' />
       <hr />
-      
+      <h5>Components via Composition</h5>
       <Row test='test'>
-        <Col>
+        <Column>
           <h5>Onboarding Flow</h5>
           <Onboarding />
-        </Col>
-        <Col>
+        </Column>
+        <Column>
           <h5>Login Flow</h5>
           <Login />
-        </Col>
+        </Column>
       </Row>
     </Container>
   </EQLayout>

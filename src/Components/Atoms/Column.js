@@ -1,10 +1,10 @@
 import React from 'react'
+import './Column.css'
 
-
-const Col = ({ props, children }) => (
+const Column = ({ props, children }) => (
   <div className='column' {...props}>
     { children }
   </div>
 )
 
-export default Col
+export default Column
