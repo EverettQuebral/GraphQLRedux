@@ -1,0 +1,14 @@
+.onboarding {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.onboarding .floating-label .input-box,
+.onboarding .floating-label .input-label {
+  height: 3.8em;
+}
