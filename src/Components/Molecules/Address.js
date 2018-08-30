@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import EntryField from './EntryField'
 import './Address.css'
 
+import { Button } from '../Atoms'
+
 /**
  * Since the address component will use different re-usable components, then the fields
  * that we need to pass to the props will be an array of the re-usable simple components (ATOMs) and MOLECULES
@@ -59,7 +61,7 @@ class Address extends Component {
                     type='text'
                     errorMessage='Wrong Format'
                     patternValid='Valid'/>
-        <button type='submit' name='submit'>{this.props.submit}</button>
+        <Button type='submit' name='submit'>{this.props.submit}</Button>
       </form>
     )
   }

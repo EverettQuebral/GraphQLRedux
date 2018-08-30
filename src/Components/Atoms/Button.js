@@ -8,6 +8,7 @@ const _style = {
 
 const Button = ({ props, buttonState, onClick, children }) => (
     <button
+      className='btn'
       {...props}
       onClick={onClick}
     >
