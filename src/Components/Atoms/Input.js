@@ -3,7 +3,7 @@ import './Input.css'
 
 const Input = ({ props, valid, onChange, onBlur }) => (
   <div className='floating-label'>
-    { console.log( ...props) }
+    {/* { props.render && props.render() } */}
     <input 
       className='input-box'
       {...props}
