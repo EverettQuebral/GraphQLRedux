@@ -1,3 +1,43 @@
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+h1 {
+  color : darkslateblue;
+  text-shadow: 5px 5px 5px #627598;
+}
+
+.container {
+  border: 1px thin;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.container p,
+.container div {
+  text-align:center;
+}
+
+.color-one {
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
+.color-two {
+  background-color: #e2e3e5;
+  border-color: #d6d8db
+}
+
+.color-three {
+  background-color: #d4edda;
+  border-color: c3e6cb
+}
+
+.color-four {
+  background-color: #eee;
+  border-color: #a2a2a2;
+}
+
 .images-container {
   display: flex;
   justify-content: space-evenly;
