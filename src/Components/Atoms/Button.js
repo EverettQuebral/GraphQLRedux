@@ -1,14 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import './Button.css'
 
-const _style = {
-    color: 'darkblue',
-    backgroundColor: 'lightgray'
-}
-
 const Button = ({ props, buttonState, onClick, children }) => (
-    <button
-      className='btn'
+    <button className='button'
       {...props}
       onClick={onClick}
     >
