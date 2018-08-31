@@ -25,6 +25,7 @@ const Address2 = compose(
     }
   })
 )(Input)
+
 const City = compose(
   withProps({
     'props': {
@@ -35,6 +36,7 @@ const City = compose(
     }
   })
 )(Input)
+
 const State = compose(
   withProps({
     'props': {
@@ -45,6 +47,7 @@ const State = compose(
     }
   })
 )(Input)
+
 const Zip = compose(
   withProps({
     'props': {
@@ -55,15 +58,18 @@ const Zip = compose(
     }
   })
 )(Input)
+
 const Country = compose(
   withProps({
     'props': {
       'name': 'country',
       'placeholder': 'Country',
       'title': 'Country',
-      'required': true
+      'required': true,
+      'render': () => ( <Button>test</Button> )
     }
   })
+
 )(Input)
 
 const SignUpButton = compose(
