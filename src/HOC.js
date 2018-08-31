@@ -67,6 +67,18 @@ const HOC = () => (
     </Jumbotron>
     <Container>
       <hr />
+      <h5>Components via Composition</h5>
+      <Row test='test'>
+        <Column>
+          <h5>Onboarding Flow</h5>
+          <Onboarding />
+        </Column>
+        <Column>
+          <h5>Login Flow</h5>
+          <Login />
+        </Column>
+      </Row>
+      <hr />
       <SectionContainer className='container color-one'>
         <h5>Base Button</h5>
         <p>A button that doesn't have anything state or handlers or properties</p>
@@ -89,18 +101,7 @@ const HOC = () => (
         <h5>Conventional React Component</h5>
         <Address name='us-address' submit='Submit Address' />
       </SectionContainer>
-      <hr />
-      <h5>Components via Composition</h5>
-      <Row test='test'>
-        <Column>
-          <h5>Onboarding Flow</h5>
-          <Onboarding />
-        </Column>
-        <Column>
-          <h5>Login Flow</h5>
-          <Login />
-        </Column>
-      </Row>
+      
 
     </Container>
   </EQLayout>
