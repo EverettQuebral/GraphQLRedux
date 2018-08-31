@@ -52,6 +52,11 @@ const ButtonEnhancedTwo = compose(
   </Fragment>
 ))
 
+const SectionContainer = ({ className, children }) => (
+  <section className={className}>
+    { children }
+  </section>
+)
 const HOC = () => (
   <EQLayout>
     <Jumbotron>
@@ -61,22 +66,29 @@ const HOC = () => (
       <p>Work in Progress</p>
     </Jumbotron>
     <Container>
-      <h4>Button Example</h4>
       <hr />
-      <h5>Base Button</h5>
-      <p>A button that doesn't have anything state or handlers or properties</p>
-      <Button>Button</Button> 
+      <SectionContainer className='container color-one'>
+        <h5>Base Button</h5>
+        <p>A button that doesn't have anything state or handlers or properties</p>
+        <Button>Button</Button> 
+      </SectionContainer>
       <hr />
-      <h5>Enhanced Button</h5>
-      <p>Button using the Base Button withProps, withState, withHandler</p>
-      <ButtonEnhancedOne>HOC Button with State</ButtonEnhancedOne>
+      <SectionContainer className='container color-two'>
+        <h5>Enhanced Button</h5>
+        <p>Button using the Base Button withProps, withState, withHandler</p>
+        <ButtonEnhancedOne>HOC Button with State</ButtonEnhancedOne>
+      </SectionContainer>
       <hr />
-      <h5>Button Group with State and Handlers</h5>
-      <p>Buttons that updates the state via handlers</p>
-      <ButtonEnhancedTwo />
+      <SectionContainer className='container color-three'>
+        <h5>Button Group with State and Handlers</h5>
+        <p>Buttons that updates the state via handlers</p>
+        <ButtonEnhancedTwo />
+      </SectionContainer>
       <hr />
-      <h5>Conventional React Component</h5>
-      <Address name='us-address' submit='Submit Address' />
+      <SectionContainer className='container color-four'>
+        <h5>Conventional React Component</h5>
+        <Address name='us-address' submit='Submit Address' />
+      </SectionContainer>
       <hr />
       <h5>Components via Composition</h5>
       <Row test='test'>
@@ -89,6 +101,7 @@ const HOC = () => (
           <Login />
         </Column>
       </Row>
+
     </Container>
   </EQLayout>
 )
