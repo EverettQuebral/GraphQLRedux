@@ -6,6 +6,7 @@ import { Form, Input, InputGroup, InputGroupAddon, Container, Jumbotron } from '
 
 import EQLayout from './EQLayout'
 import EQLoader from './EQLoader'
+import Button from './Components/Atoms/Button'
 
 const GET_MESSAGES = gql `
   query {
@@ -169,7 +170,7 @@ class Sender extends Component {
                 <InputGroup>
                   <InputGroupAddon addonType='prepend'>Type Here</InputGroupAddon>
                   <Input placeholder='your message here' type='text' name='channel' value={this.state.message} onChange={ e => this.setState({ message: e.target.value })} />
-                  <InputGroupAddon addonType='append'><input type='submit' /></InputGroupAddon>
+                  <InputGroupAddon addonType='append'><Button props={{className:'button button-animated'}} type='submit'>Send Message</Button></InputGroupAddon>
                 </InputGroup>
               </Form>
             )}
