@@ -4,7 +4,15 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   color : darkslateblue;
-  text-shadow: 5px 5px 5px #627598;
+  text-shadow: 4px 3px 8px #627598;
+}
+
+.container .tron-1 {
+  background: linear-gradient(#b8daff, #cce5ff);
+}
+
+.container .tron-2 {
+  background: linear-gradient(d6d8db, #e2e3e5);
 }
 
 .container {
