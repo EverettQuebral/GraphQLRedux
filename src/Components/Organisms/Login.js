@@ -9,7 +9,8 @@ import './Login.css'
 const LoginButton = compose(
   withProps({ 'props': {
     'name': 'login',
-    'title': 'Login'
+    'title': 'Login',
+    'className': 'button button-animated'
   }})
 )(Button)
 
