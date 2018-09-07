@@ -59,7 +59,7 @@ const AstroImagesGQL = () => (
 )
 
 const Intro = () => (
-  <Jumbotron>
+  <Jumbotron className='tron-2'>
     <h1>All About Building Scalable Applications</h1>
     <p className='lead'>I have been building scallable applications from the ground up for over 2 decades now and would like to share some of those learnings here.</p>
     <p>This is about sharing some of those information and giving an example of the most common challenges specially in using the latest and greatest technology currently available</p>
