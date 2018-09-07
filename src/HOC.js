@@ -19,7 +19,8 @@ const ButtonEnhancedOne = compose(
   }),
   withProps({ 'props': {
     'name' : 'Testing',
-    'text': 'Button with State'
+    'text': 'Button with State',
+    'className': 'button button-animated'
   }}),
   // debug,
   // withHandlers({
@@ -46,9 +47,9 @@ const ButtonEnhancedTwo = compose(
 )(({ counter, incrementOn, decrementOn, resetCounter }) => (
   <Fragment>
     <div>{counter}</div>
-    <button onClick={() => incrementOn(2)}>Inc + 2</button>
-    <button onClick={() => decrementOn(1)}>Dec - 1</button>
-    <button onClick={resetCounter}>Reset</button>
+    <Button props={{className:'button button-animated'}} onClick={() => incrementOn(2)}>Inc + 2</Button>
+    <Button props={{className:'button button-animated'}} onClick={() => decrementOn(1)}>Dec - 1</Button>
+    <Button props={{className:'button button-animated'}} onClick={resetCounter}>Reset</Button>
   </Fragment>
 ))
 
@@ -59,7 +60,7 @@ const SectionContainer = ({ className, children }) => (
 )
 const HOC = () => (
   <EQLayout>
-    <Jumbotron>
+    <Jumbotron className='tron-1'>
       <h1 className='display-3'>High Order Component</h1>
       <h4>For maximizing Component Reuse, minimize code</h4>
       <p>An implementation of an Address Component that can support 200+ countries with a different services to call on validating the Address, giving an extra help of using Auto Detection, Auto Suggest and much more depending on the capability fro a particular country</p>
@@ -82,7 +83,7 @@ const HOC = () => (
       <SectionContainer className='container color-one'>
         <h5>Base Button</h5>
         <p>A button that doesn't have anything state or handlers or properties</p>
-        <Button>Button</Button> 
+        <Button props={{className:'button button-animated'}}>Button</Button> 
       </SectionContainer>
       <hr />
       <SectionContainer className='container color-two'>
@@ -101,8 +102,6 @@ const HOC = () => (
         <h5>Conventional React Component</h5>
         <Address name='us-address' submit='Submit Address' />
       </SectionContainer>
-      
-
     </Container>
   </EQLayout>
 )
