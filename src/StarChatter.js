@@ -5,6 +5,7 @@ import { Toggle, Label as LabelToggle } from '@zendeskgarden/react-toggles'
 import { connect } from 'react-redux'
 import { Container, Jumbotron } from 'reactstrap'
 import ReactLoading from 'react-loading'
+import { Button } from './Components/Atoms'
 
 import './StarChatter.css'
 
@@ -74,7 +75,7 @@ const mapDispatchToProps = ( dispatch, { id, isSelected } ) => ({
       type: 'TOGGLE_SELECTED_CHATTER',
       id,
       isSelected
-    })
+    }) 
 })
 
 const SelectedContainer = connect(null, mapDispatchToProps)(Select)
@@ -84,10 +85,10 @@ const Star = ({ id }) => (
     console.log('completed')
   }}>
     {starUser => (
-      <button type='button' onClick={starUser}>
+      <Button type='button' onClick={starUser} props={{className:'button button-animated'}}>
       Star
       {console.log('starred')}
-    </button>
+    </Button>
     )}
   </Mutation>
 )
@@ -106,7 +107,7 @@ const GetChatters = () => (
 
 const StarChatter = () => (
   <EQLayout>
-    <Jumbotron>
+    <Jumbotron className='tron-2'>
       <h1 className='display-3'>Redux Store + GraphQL + Apollo Client</h1>
       <p>An example of a React Application that is using Redux Store to manage state on the client side while using Apollo Client in managing remote state and store</p>
       <p>You can take a look at the source of this application here <a href='https://github.com/EverettQuebral/GraphQLRedux/blob/master/src/StarChatter.js'>StarChatter.js</a></p>
