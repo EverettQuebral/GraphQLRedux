@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { Container, Jumbotron } from 'reactstrap'
 import ReactLoading from 'react-loading'
 import { Button } from './Components/Atoms'
+import { withStateHandlers, compose } from 'recompose' 
 
 import './StarChatter.css'
 
@@ -80,16 +81,28 @@ const mapDispatchToProps = ( dispatch, { id, isSelected } ) => ({
 
 const SelectedContainer = connect(null, mapDispatchToProps)(Select)
 
+const ButtonWithState = compose(
+  withStateHandlers( ({ initialCounter = 0 })  => ({
+    counter: initialCounter
+  }),
+  {
+    incrementOn: ({ counter }) => ( value ) => ({
+      counter: counter + value
+    })
+  }
+))(
+  ({ counter, incrementOn }) => (
+    <Button props={{className:'button button-animated'}} onClick={() => incrementOn(1)}>Star {counter}</Button>
+  )
+)
+
 const Star = ({ id }) => (
   <Mutation mutation={STAR_USER} variables={{ id }} onCompleted={() => {
     console.log('completed')
   }}>
-    {starUser => (
-      <Button type='button' onClick={starUser} props={{className:'button button-animated'}}>
-      Star
-      {console.log('starred')}
-    </Button>
-    )}
+    { starUser => (
+      <ButtonWithState onClick={starUser} />
+     )}
   </Mutation>
 )
 
