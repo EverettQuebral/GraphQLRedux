@@ -9,8 +9,8 @@ const Address1 = compose(
   withProps({
     'props': {
       'name': 'address1',
-      'placeholder': 'Address Line 1',
-      'title': 'Address Line 1',
+      'placeholder': 'Address Line 1*',
+      'title': 'Address Line 1*',
       'required': true
     }
   })
@@ -30,8 +30,8 @@ const City = compose(
   withProps({
     'props': {
       'name': 'city',
-      'placeholder': 'City',
-      'title': 'City',
+      'placeholder': 'City*',
+      'title': 'City*',
       'required': true
     }
   })
@@ -41,8 +41,8 @@ const State = compose(
   withProps({
     'props': {
       'name': 'state',
-      'placeholder': 'State',
-      'title': 'State',
+      'placeholder': 'State*',
+      'title': 'State*',
       'required': true
     }
   })
@@ -52,8 +52,8 @@ const Zip = compose(
   withProps({
     'props': {
       'name': 'zip',
-      'placeholder': 'Zip',
-      'title': 'Zip',
+      'placeholder': 'Zip*',
+      'title': 'Zip*',
       'required': true
     }
   })
@@ -63,8 +63,8 @@ const Country = compose(
   withProps({
     'props': {
       'name': 'country',
-      'placeholder': 'Country',
-      'title': 'Country',
+      'placeholder': 'Country*',
+      'title': 'Country*',
       'required': true,
       'render': () => ( <Button>test</Button> )
     }
@@ -76,7 +76,8 @@ const SignUpButton = compose(
   withProps({
     'props' : {
       'name': 'signup',
-      'title': 'Signup'
+      'title': 'Signup',
+      'className': 'button button-animated'
     }
   })
 )(Button)
