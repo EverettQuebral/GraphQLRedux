@@ -8,6 +8,7 @@
   justify-content: center;
   align-content: top;
   align-self: flex-start;
+  box-sizing: border-box;
 }
 
 /* .onboarding {
