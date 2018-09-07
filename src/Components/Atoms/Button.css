@@ -2,4 +2,42 @@
   border-radius: 5px;
   border: 1px solid darkgray;
   padding: 5px 30px;
+  transition-duration: all 0.8s ease;
+  position: relative;
+}
+
+.button-animated:active:before {
+  opacity: 1;
+  transition: 0s;
+  transform: scale(0.001, 0.001);
+}
+
+.button-animated:before {
+  content: '';
+  background-color: darkslateblue;
+  border-radius: 10%;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.4s;
+  /* animation: effect_dylan 0.5s ease; */
+  opacity: 0;
+}
+
+@keyframes effect_dylan {
+  50% {
+    transform: scale(1, 1);
+    opacity: 0;
+  }
+  99% {
+    transform: scale(0.001, 0.001);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.001, 0.001);
+    opacity: 1;
+  }
 }
