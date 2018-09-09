@@ -1,5 +1,6 @@
 import React from 'react'
 import './Card.css'
+import Button from '../Atoms/Button'
 
 const CardHeader = ({ img, children }) => (
   <div className='eqcard-header'>
@@ -37,7 +38,7 @@ const CardBody = ({ description, moreinfo }) => (
 
 const CardFooter = ({ fullsize }) => (
   <div className='eqcard-footer'>
-    <a href={fullsize}>Full Size</a>
+    <Button props={{className:'button button-animated'}}><a href={fullsize}>Full Size</a></Button>
   </div>
 )
 
