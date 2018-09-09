@@ -24,21 +24,31 @@ const CardHeader = ({ img, children }) => (
   </div>
 )
 
-const CardBody = () => (
+const CardBody = ({ description, moreinfo }) => (
   <div className='eqcard-body'>
     <div className='eqcard-left'>
+      {description}
     </div>
     <div className='eqcard-right'>
+     {moreinfo}
     </div>
   </div>
 )
 
-const Card = ({ img, title, subtitle, description }) => (
+const CardFooter = ({ fullsize }) => (
+  <div className='eqcard-footer'>
+    <a href={fullsize}>Full Size</a>
+  </div>
+)
+
+const Card = ({ img, title, subtitle, description, moreinfo, fullsize }) => (
   <div className='eqcard'>
       <CardHeader img={img}>
         <div className='title'>{title}</div>
         <div className='subtitle'>{subtitle}</div>
       </CardHeader>
+      <CardBody description={description} moreinfo={moreinfo}/>
+      <CardFooter fullsize={fullsize}/>
   </div>
 )
 
