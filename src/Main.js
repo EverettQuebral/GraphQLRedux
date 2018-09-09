@@ -75,16 +75,34 @@ const Intro = () => (
   </Jumbotron>
 )
 
+const CardContainer = () => (
+  <section className='card-container'>
+    <Card 
+      img='' 
+      title='Sh2-101' 
+      subtitle='Tulip Nebula' 
+      description='Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall' 
+      fullsize='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'/>
+    <Card 
+      img='' 
+      title='Sh2-101' 
+      subtitle='Tulip Nebula' 
+      description='Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall' 
+      fullsize='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'/>
+    <Card 
+      img='' 
+      title='Sh2-101' 
+      subtitle='Tulip Nebula' 
+      description='Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall' 
+      fullsize='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'/>
+  </section>
+)
+
 
 const Main = () => (
   <EQLayout>
     <Intro />
-    <Card img='' 
-      title='M101' 
-        subtitle='The Great Nebula' 
-        description='This is Everett Quebral' 
-        moreinfo='some more information here' 
-        fullsize='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'/>
+    <CardContainer />
     <AstroImagesGQL />
     <div>
       <h4>React GraphQL Apollo Client and Redux</h4>

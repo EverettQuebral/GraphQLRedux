@@ -1,6 +1,11 @@
+a, a:hover, a:active {
+  text-decoration: none;
+}
+
+
 .eqcard {
   width: 300px;
-  height: 400px;
+  min-height: 400px;
   overflow: hidden;
   display: block;
   position: relative;
@@ -72,20 +77,10 @@
   padding: 10px;
   display: flex;
   flex-direction: row;
+  font-size: 0.8rem;
+  overflow: hidden;
 }
 
-.eqcard-body .eqcard-left {
-  font-size: .9rem;
-  text-align: left;
-  width: 50%;
-}
-
-.eqcard-body .eqcard-right {
-  font-size: 1.2rem;
-  text-align: right;
-  width: 45%;
-  float:right;
-}
 
 .eqcard-footer {
   position: absolute;

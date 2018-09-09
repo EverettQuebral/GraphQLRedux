@@ -27,18 +27,13 @@ const CardHeader = ({ img, children }) => (
 
 const CardBody = ({ description, moreinfo }) => (
   <div className='eqcard-body'>
-    <div className='eqcard-left'>
       {description}
-    </div>
-    <div className='eqcard-right'>
-     {moreinfo}
-    </div>
   </div>
 )
 
 const CardFooter = ({ fullsize }) => (
   <div className='eqcard-footer'>
-    <Button props={{className:'button button-animated'}}><a href={fullsize}>Full Size</a></Button>
+    <a className='button button-animated' href={fullsize}>Full Size</a>
   </div>
 )
 
