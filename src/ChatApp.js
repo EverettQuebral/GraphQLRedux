@@ -188,7 +188,7 @@ const Chat = () => (
       <p>You can take a look at the source in my github repo <a href="https://github.com/EverettQuebral/GraphQLRedux/blob/master/src/ChatApp.js">https://github.com/EverettQuebral/GraphQLRedux/blob/master/src/ChatApp.js</a></p>
     </Jumbotron>
     <h3>About You</h3>
-    <Sender props={{ channel: 'Channle Here', author: 'Author here', message: 'Message Here' }}/>
+    <Sender props={{ channel: 'Channel Here', author: 'Author here', message: 'Message Here' }}/>
   </EQLayout>
 )
 

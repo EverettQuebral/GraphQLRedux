@@ -1,0 +1,64 @@
+.eqcard {
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  background-color: #2c3947;
+  border-radius: 10px;
+}
+
+.eqcard .eqcard-header {
+  position: relative;
+}
+
+.eqcard .eqcard-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #e3ebf4; 
+}
+
+.eqcard .eqcard-title .title {
+  text-align: left;
+  font-size: 1.8rem;
+}
+
+.eqcard .eqcard-title .subtitle {
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.eqcard .eqcard-header img {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.eqcard .eqcard-menu {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.eqcard .eqcard-menu:hover > ul {
+  display: block;
+}
+
+.eqcard .eqcard-menu ul {
+  position: absolute;
+  right: 25px;
+  top : 0;
+  opacity: .7;
+  display: none;
+  width: 115px;
+}
+
+.eqcard .eqcard-menu .eqcard-icon {
+  float: left;
+  height: 25px;
+  width: 25px;
+  list-style-type: none;
+}
+

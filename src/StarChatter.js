@@ -101,7 +101,8 @@ const Star = ({ id }) => (
     console.log('completed')
   }}>
     { starUser => (
-      <ButtonWithState onClick={starUser} />
+      <ButtonWithState starUser={starUser} />
+      // <button onClick={starUser}>Star User</button>
      )}
   </Mutation>
 )

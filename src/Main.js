@@ -5,6 +5,8 @@ import './Main.css'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import Card from './Components/Organisms/Card'
+
 const AstroImage = () => (
   <Fragment>
     <hr />
@@ -73,9 +75,11 @@ const Intro = () => (
   </Jumbotron>
 )
 
+
 const Main = () => (
   <EQLayout>
     <Intro />
+    <Card img='' title='M101' subtitle='The Great Nebula' description='This is Everett Quebral' />
     <AstroImagesGQL />
     <div>
       <h4>React GraphQL Apollo Client and Redux</h4>
