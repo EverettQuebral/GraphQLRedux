@@ -92,18 +92,37 @@ const ButtonWithState = compose(
   }
 ))(
   ({ counter, incrementOn }) => (
-    <Button props={{className:'button button-animated'}} onClick={() => incrementOn(1)}>Star {counter}</Button>
+    <Button 
+      props={{className:'button button-animated'}} 
+      onClick={() => incrementOn(1)}
+      >
+      Star {counter}
+    </Button>
   )
 )
 
+// const Star = ({ id }) => (
+//   <Mutation mutation={STAR_USER} variables={{ id }} onCompleted={() => {
+//     console.log('completed')
+//   }}>
+//     { starUser => (
+//       // <ButtonWithState starUser={starUser} />
+//       <ButtonWithState onClick={starUser} />
+//       // <button onClick={starUser}>Star User</button>
+//      )}
+//   </Mutation>
+// )
+
 const Star = ({ id }) => (
-  <Mutation mutation={STAR_USER} variables={{ id }} onCompleted={() => {
-    console.log('completed')
-  }}>
-    { starUser => (
-      <ButtonWithState starUser={starUser} />
-      // <button onClick={starUser}>Star User</button>
-     )}
+  <Mutation mutation={STAR_USER} variables={{ id }} onCompleted={() => { console.log('completed') }}>
+  { starUser => (
+    <form name='testing' onSubmit={e => {
+      e.preventDefault()
+      starUser({ variables: { id } })
+    }}>
+      <ButtonWithState />
+    </form>
+  ) }
   </Mutation>
 )
 
