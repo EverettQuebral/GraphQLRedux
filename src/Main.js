@@ -78,6 +78,7 @@ const Intro = () => (
 const CardContainer = () => (
   <section className='card-container'>
     <Card 
+      classAddition='grow'
       img='' 
       title='Sh2-101' 
       subtitle='Tulip Nebula' 
@@ -102,8 +103,18 @@ const CardContainer = () => (
 const Main = () => (
   <EQLayout>
     <Intro />
-    <CardContainer />
-    <AstroImagesGQL />
+    <hr />
+    <Container>
+      <h5>The Cards below have some animations and hover effects, please play around</h5>
+      <CardContainer />
+    </Container>
+    <hr />
+    <Container>
+      <h5>The Cards below have the playing cards effects, turns over with 3D effects</h5>
+      <AstroImagesGQL />
+    </Container>
+
+    
     <div>
       <h4>React GraphQL Apollo Client and Redux</h4>
       <hr />
