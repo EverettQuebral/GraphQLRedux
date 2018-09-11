@@ -2,3 +2,18 @@
 .floating-label .input-label {
   height: 3.8em;
 }
+
+form.onboarding,
+form.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  width: 97%;
+  min-width: 300px;
+  /* width: 450px; */
+  vertical-align: center;
+  margin: 20px 0 20px;
+}
