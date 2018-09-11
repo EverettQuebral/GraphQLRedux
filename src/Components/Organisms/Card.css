@@ -14,6 +14,14 @@ a, a:hover, a:active {
   border: 1px solid #415263;
   box-shadow: 10px 10px 10px #415263;
   box-sizing: content-box;
+  z-index: 1;
+  transition: all .6s ease-in-out;
+}
+
+.eqcard:hover {
+  transform: scale(1.2, 1.2);
+  z-index: 100;
+  transition: all .2s ease;
 }
 
 .eqcard .eqcard-header {
@@ -67,8 +75,10 @@ a, a:hover, a:active {
   transition: all .2s ease;
 }
 
-.eqcard-menu ul > li:hover {
-  opacity: 1;
+.eqcard .eqcard-menu .eqcard-icon:hover {
+  height: 30px;
+  width: 25px;
+  transition: all .2s ease-in-out;
 }
 
 .eqcard .eqcard-menu .eqcard-icon {
