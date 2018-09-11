@@ -3,20 +3,20 @@ import './Card.css'
 
 const CardHeader = ({ img, children }) => (
   <div className='eqcard-header'>
-    <img src='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_m.jpg'
-  srcset='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab.jpg 500w, https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg 1000w' />
+    <img className='main-image' src='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_m.jpg'
+  srcSet='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab.jpg 500w, https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg 1000w' />
     <div className='eqcard-title'>{children}</div>
     <div className='eqcard-menu'>
       <img className='eqcard-icon' src='/_ionicons_svg_md-menu.svg' />
       <ul>
         <li className='eqcard-icon'>
-          <img src='/_ionicons_svg_logo-facebook.svg' />
+          <img className='facebook' src='/_ionicons_svg_logo-facebook.svg' />
         </li>
         <li className='eqcard-icon'>
-          <img src='/_ionicons_svg_logo-instagram.svg' />
+          <img className='instagram' src='/_ionicons_svg_logo-instagram.svg' />
         </li>
         <li className='eqcard-icon'>
-          <img src='/_ionicons_svg_logo-twitter.svg' />
+          <img className='twitter' src='/_ionicons_svg_logo-twitter.svg' />
         </li>
       </ul>
 
