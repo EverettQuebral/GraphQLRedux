@@ -63,7 +63,7 @@ h1 {
   display: block;
   border-radius: 10px;
   box-shadow: 10px 10px 5px lightgray;
-  transition: all 0.8s ease 1s;
+  transition: all 0.3s ease .2s;
   transform-style: preserve-3d;
   flex-basis: content;
   box-sizing: content-box;
@@ -71,6 +71,7 @@ h1 {
 }
 
 .image-item:hover {
+  transition: all .8s ease-in-out;
   transform: rotateY(180deg)
 }
 
