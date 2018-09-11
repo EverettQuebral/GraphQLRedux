@@ -8,10 +8,7 @@ const CardExpandable = compose(
   withState('collapsed', 'clickHandler', true),
   withHandlers({
     onClick: ({clickHandler}) => (event) => {
-      console.log(event.target)
-      if (event.target.classList.contains('main-image')){
-        clickHandler(collapsed => !collapsed)
-      }
+      clickHandler(collapsed => !collapsed)
     }
   })
 )(Card)
