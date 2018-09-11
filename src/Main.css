@@ -118,7 +118,9 @@ a:hover, a:visited, a:link, a:active {
   border-radius: 10px 10px 0 0;
 }
 
-.card-container {
+
+.card-container,
+.expandable-card-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

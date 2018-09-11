@@ -42,8 +42,7 @@ const ButtonEnhancedTwo = compose(
     resetCounter: (_, { initialCounter = 0 }) => (value) => ({
       counter : initialCounter
     })
-  }
-)
+  })
 )(({ counter, incrementOn, decrementOn, resetCounter }) => (
   <Fragment>
     <div>{counter}</div>

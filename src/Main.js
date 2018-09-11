@@ -6,6 +6,7 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import Card from './Components/Organisms/Card'
+import CardExpandable from './Components/Organisms/CardExpandable'
 
 const AstroImage = () => (
   <Fragment>
@@ -75,27 +76,61 @@ const Intro = () => (
   </Jumbotron>
 )
 
+const CardExpandableContainer = () => (
+  <section className='expandable-card-container'>
+    <CardExpandable props={{        
+      img:'' ,
+      title:'Sh2-101' ,
+      subtitle:'Tulip Nebula' ,
+      description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+      fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'}} 
+    />    
+    <CardExpandable props={{        
+        img:'' ,
+        title:'Sh2-101' ,
+        subtitle:'Tulip Nebula' ,
+        description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+        fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'}} 
+    />
+    <CardExpandable props={{        
+      img:'' ,
+      title:'Sh2-101' ,
+      subtitle:'Tulip Nebula' ,
+      description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+      fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'}} 
+    />
+  </section>
+)
+
 const CardContainer = () => (
   <section className='card-container'>
     <Card 
-      classAddition='grow'
-      img='' 
-      title='Sh2-101' 
-      subtitle='Tulip Nebula' 
-      description='Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall' 
-      fullsize='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'/>
+      props={{
+        img:'' ,
+        title:'Sh2-101' ,
+        subtitle:'Tulip Nebula' ,
+        description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+        fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+      }}
+    />  
     <Card 
-      img='' 
-      title='Sh2-101' 
-      subtitle='Tulip Nebula' 
-      description='Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall' 
-      fullsize='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'/>
+      props={{
+        img:'' ,
+        title:'Sh2-101' ,
+        subtitle:'Tulip Nebula' ,
+        description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+        fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+      }}
+    />  
     <Card 
-      img='' 
-      title='Sh2-101' 
-      subtitle='Tulip Nebula' 
-      description='Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall' 
-      fullsize='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'/>
+      props={{
+        img:'' ,
+        title:'Sh2-101' ,
+        subtitle:'Tulip Nebula' ,
+        description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+        fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+      }}
+    />  
   </section>
 )
 
@@ -103,6 +138,11 @@ const CardContainer = () => (
 const Main = () => (
   <EQLayout>
     <Intro />
+    <hr />
+    <Container>
+      <h5>Expanding Card, click the card and it will grow like the cards shown in the next section</h5>
+      <CardExpandableContainer />
+    </Container>
     <hr />
     <Container>
       <h5>The Cards below have some animations and hover effects, please play around</h5>
@@ -113,7 +153,6 @@ const Main = () => (
       <h5>The Cards below have the playing cards effects, turns over with 3D effects</h5>
       <AstroImagesGQL />
     </Container>
-
     
     <div>
       <h4>React GraphQL Apollo Client and Redux</h4>

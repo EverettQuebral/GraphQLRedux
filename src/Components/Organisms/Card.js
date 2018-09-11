@@ -1,6 +1,5 @@
-import React from 'react'
+import React, {Fragment } from 'react'
 import './Card.css'
-import Button from '../Atoms/Button'
 
 const CardHeader = ({ img, children }) => (
   <div className='eqcard-header'>
@@ -25,7 +24,7 @@ const CardHeader = ({ img, children }) => (
   </div>
 )
 
-const CardBody = ({ description, moreinfo }) => (
+const CardBody = ({ description }) => (
   <div className='eqcard-body'>
       {description}
   </div>
@@ -37,14 +36,16 @@ const CardFooter = ({ fullsize }) => (
   </div>
 )
 
-const Card = ({ img, title, subtitle, description, moreinfo, fullsize }) => (
-  <div className='eqcard'>
-      <CardHeader img={img}>
-        <div className='title'>{title}</div>
-        <div className='subtitle'>{subtitle}</div>
+const Card = ({ props, onClick, collapsed=false }) => (
+  <div className={collapsed === true ? 'eqcard collapsed' : 'eqcard'}
+      onClick={onClick}
+    >
+      <CardHeader img={props.img}>
+        <div className='title'>{props.title}</div>
+        <div className='subtitle'>{props.subtitle}</div>
       </CardHeader>
-      <CardBody description={description} moreinfo={moreinfo}/>
-      <CardFooter fullsize={fullsize}/>
+      <CardBody description={props.description} moreinfo={props.moreinfo}/>
+      <CardFooter fullsize={props.fullsize}/>
   </div>
 )
 

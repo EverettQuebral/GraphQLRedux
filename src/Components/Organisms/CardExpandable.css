@@ -1,0 +1,30 @@
+.eqcard.collapsed {
+  width: 100px;
+  min-height: 100px;
+  height: 100px;
+}
+
+.eqcard.collapsed .eqcard-menu {
+  display: none;
+}
+
+.eqcard.collapsed .eqcard-body {
+  display: none;
+}
+
+.eqcard.collapsed .eqcard-footer {
+  display: none;
+}
+
+.eqcard.collapsed .eqcard-title {
+  bottom: -20px;
+}
+
+.eqcard.collapsed .eqcard-title .title,
+.eqcard.eqcard.collapsed .eqcard-title .subtitle {
+  font-size: .8rem;
+}
+
+.eqcard.eqcard.collapsed .eqcard-title .subtitle {
+  color: black;
+}
