@@ -72,7 +72,7 @@ const Intro = () => (
     <p>You can take a look at the examples by navigating to the Samples Menu.</p>
     <hr />
     <h3>Re-Write in Progress</h3>
-    <p style={{ 'color': 'red' }}>I decided to re-write and use my own designed components as instead of borrowing 3rd party components</p>
+    <p style={{ 'color': 'red' }}>I decided to re-write and use my own designed components as instead of borrowing 3rd party components.  It's mostly because I want to experiment and want to push the components to the limit like adding crazy animations while making the components very light and re-usable</p>
   </Jumbotron>
 )
 
@@ -141,11 +141,13 @@ const Main = () => (
     <hr />
     <Container>
       <h5>Expanding Card, click the card and it will grow like the cards shown in the next section</h5>
+      <p>Each card maintains a state on how it is displayed.  A collapsed state signify that the cards are displayed like a big icon and the normal state where it is displayed as a Card.  It has all the state that are in the Cards.</p>
       <CardExpandableContainer />
     </Container>
     <hr />
     <Container>
       <h5>The Cards below have some animations and hover effects, please play around</h5>
+      <p>A couple of actions can be carried on the cards.  The Menu offers sharing the image to FB, Twitter or Instagram.  Although real integration is not the point here but the buttons carries an action :) </p>
       <CardContainer />
     </Container>
     <hr />
