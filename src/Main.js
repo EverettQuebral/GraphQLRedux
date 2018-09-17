@@ -114,40 +114,43 @@ const CardContainerWithState = compose(
       shareHandler(shared => x)
     }
   })
-)( ({ props, children, onClick, shared }) => (
-  <Fragment>
-  <Container>Shared to {shared}</Container>
-  <section className='card-container card-container-with-state' onClick={onClick}>
-    <Card 
-      props={{
-        img:'' ,
-        title:'Sh2-101' ,
-        subtitle:'Tulip Nebula' ,
-        description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
-        fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
-      }}
-    />  
-    <Card 
-      props={{
-        img:'' ,
-        title:'Sh2-102' ,
-        subtitle:'Tulip Nebula' ,
-        description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
-        fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
-      }}
-    />  
-    <Card 
-      props={{
-        img:'' ,
-        title:'Sh2-103' ,
-        subtitle:'Tulip Nebula' ,
-        description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
-        fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
-      }}
-    />
-  </section>
-  </Fragment>
-))
+)( ({ props, children, onClick, shared }) => {
+  const share = shared !== '' ? <Container className='container color-one'>Shared to {shared}</Container> : ''
+  return (
+    <Fragment>
+      {share}
+      <section className='card-container card-container-with-state' onClick={onClick}>
+        <Card 
+          props={{
+            img:'' ,
+            title:'Sh2-101' ,
+            subtitle:'Tulip Nebula' ,
+            description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+            fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+          }}
+        />  
+        <Card 
+          props={{
+            img:'' ,
+            title:'Sh2-102' ,
+            subtitle:'Tulip Nebula' ,
+            description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+            fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+          }}
+        />  
+        <Card 
+          props={{
+            img:'' ,
+            title:'Sh2-103' ,
+            subtitle:'Tulip Nebula' ,
+            description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+            fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+          }}
+        />
+      </section>
+    </Fragment>
+  )
+})
 
 // const CardContainer = () => (
 //   <section className='card-container'>
