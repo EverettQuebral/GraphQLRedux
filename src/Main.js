@@ -5,8 +5,11 @@ import './Main.css'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import { withState, withHandlers, compose } from 'recompose' 
+
 import Card from './Components/Organisms/Card'
 import CardExpandable from './Components/Organisms/CardExpandable'
+import CardContainer from './Components/Containers/CardContainer'
 
 const AstroImage = () => (
   <Fragment>
@@ -102,8 +105,19 @@ const CardExpandableContainer = () => (
   </section>
 )
 
-const CardContainer = () => (
-  <section className='card-container'>
+const CardContainerWithState = compose(
+  withState( 'shared', 'shareHandler', ''),
+  withHandlers({
+    onClick: ({shareHandler}) => (event) => {
+      console.log('shareHandler ', event.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].childNodes[0].innerText)
+      const x = event.target.className + ' ' + event.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].childNodes[0].innerText
+      shareHandler(shared => x)
+    }
+  })
+)( ({ props, children, onClick, shared }) => (
+  <Fragment>
+  <Container>Shared to {shared}</Container>
+  <section className='card-container card-container-with-state' onClick={onClick}>
     <Card 
       props={{
         img:'' ,
@@ -116,7 +130,7 @@ const CardContainer = () => (
     <Card 
       props={{
         img:'' ,
-        title:'Sh2-101' ,
+        title:'Sh2-102' ,
         subtitle:'Tulip Nebula' ,
         description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
         fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
@@ -125,14 +139,47 @@ const CardContainer = () => (
     <Card 
       props={{
         img:'' ,
-        title:'Sh2-101' ,
+        title:'Sh2-103' ,
         subtitle:'Tulip Nebula' ,
         description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
         fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
       }}
-    />  
+    />
   </section>
-)
+  </Fragment>
+))
+
+// const CardContainer = () => (
+//   <section className='card-container'>
+//     <Card 
+//       props={{
+//         img:'' ,
+//         title:'Sh2-101' ,
+//         subtitle:'Tulip Nebula' ,
+//         description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+//         fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+//       }}
+//     />  
+//     <Card 
+//       props={{
+//         img:'' ,
+//         title:'Sh2-101' ,
+//         subtitle:'Tulip Nebula' ,
+//         description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+//         fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+//       }}
+//     />  
+//     <Card 
+//       props={{
+//         img:'' ,
+//         title:'Sh2-101' ,
+//         subtitle:'Tulip Nebula' ,
+//         description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
+//         fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
+//       }}
+//     />  
+//   </section>
+// )
 
 
 const Main = () => (
@@ -148,7 +195,7 @@ const Main = () => (
     <Container>
       <h5>The Cards below have some animations and hover effects, please play around</h5>
       <p>A couple of actions can be carried on the cards.  The Menu offers sharing the image to FB, Twitter or Instagram.  Although real integration is not the point here but the buttons carries an action :) </p>
-      <CardContainer />
+      <CardContainerWithState />
     </Container>
     <hr />
     <Container>
