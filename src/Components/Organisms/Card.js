@@ -30,7 +30,7 @@ const CardMenuWithStateAndHandler = compose(
   withHandlers({
     onClick: ({ sharedHandler }) => (event) => {
       const x = event.target.className
-      console.log(x)
+      console.log('CardMenuWithStateAndHandler ', x)
       sharedHandler(shared => x)
     }
   })
@@ -38,8 +38,12 @@ const CardMenuWithStateAndHandler = compose(
 
 const CardHeader = ({ img, children, onClick }) => (
   <div className='eqcard-header'>
-    <img onClick={onClick} className='main-image' src='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_m.jpg'
-  srcSet='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab.jpg 500w, https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg 1000w' />
+    <img 
+      onClick={onClick} 
+      className='main-image' 
+      src='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_m.jpg'
+      srcSet='https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab.jpg 500w, https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg 1000w'
+      alt='astro image' />
     <div className='eqcard-title'>{children}</div>
     <CardMenuWithStateAndHandler />
   </div>
@@ -47,7 +51,7 @@ const CardHeader = ({ img, children, onClick }) => (
 
 const CardBody = ({ description }) => (
   <div className='eqcard-body'>
-      {description}
+    {description}
   </div>
 )
 
@@ -57,15 +61,14 @@ const CardFooter = ({ fullsize }) => (
   </div>
 )
 
-const Card = ({ props, onClick, collapsed=false }) => (
-  <div className={collapsed === true ? 'eqcard collapsed' : 'eqcard'}
-    >
-      <CardHeader img={props.img} onClick={onClick}>
-        <div className='title'>{props.title}</div>
-        <div className='subtitle'>{props.subtitle}</div>
-      </CardHeader>
-      <CardBody description={props.description} moreinfo={props.moreinfo}/>
-      <CardFooter fullsize={props.fullsize}/>
+const Card = ({ props, onClick, collapsed=false, shared='' }) => (
+  <div className={collapsed === true ? 'eqcard collapsed' : 'eqcard'}>
+    <CardHeader img={props.img} onClick={onClick}>
+      <div className='title'>{props.title}</div>
+      <div className='subtitle'>{props.subtitle}</div>
+    </CardHeader>
+    <CardBody description={props.description} moreinfo={props.moreinfo}/>
+    <CardFooter fullsize={props.fullsize}/>
   </div>
 )
 
