@@ -198,6 +198,7 @@ const Main = () => (
     <Container>
       <h5>The Cards below have some animations and hover effects, please play around</h5>
       <p>A couple of actions can be carried on the cards.  The Menu offers sharing the image to FB, Twitter or Instagram.  Although real integration is not the point here but the buttons carries an action :) </p>
+      <p>The container keeps a state of what card is shared.  It has the ability to send Mutation Request in the Container level while the cards are also capable of sending updates.  The point here is that a Query with Mutation can be handled at the Container Level</p>
       <CardContainerWithState />
     </Container>
     <hr />
