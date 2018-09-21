@@ -1,3 +1,8 @@
+/* eslint-disable import/first */
+
+import 'babel-polyfill'
+import 'babel-plugin-syntax-dynamic-import'
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -56,8 +61,8 @@ const store = createStore(
 
 const cache = new ReduxCache({ store })
 
-// const httpUri = 'http://192.168.1.119:4000/graphql'
-// const wsUri = 'ws://192.168.1.119:4000/subscriptions'
+// const httpUri = 'http://localhost:4000/graphql'
+// const wsUri = 'ws://localhost:4000/subscriptions'
 
 const httpUri = 'https://eqsystems.herokuapp.com/graphql'
 const wsUri = 'wss://eqsystems.herokuapp.com/subscriptions'
