@@ -1,14 +1,24 @@
+/* eslint-disable import/first */
+
 import React, { Fragment } from 'react'
 import { Jumbotron, Container } from 'reactstrap';
 import EQLayout from './EQLayout'
 import './Main.css'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+import Loadable from 'react-loadable'
 
 import { withState, withHandlers, compose } from 'recompose' 
 
 import Card from './Components/Organisms/Card'
+
+const CardExpandableLoadable = Loadable({
+  loader: () => import('./Components/Organisms/CardExpandable'),
+  loading: () => <div>Loading...</div>
+})
+
 import CardExpandable from './Components/Organisms/CardExpandable'
+
 import CardContainer from './Components/Containers/CardContainer'
 
 const AstroImage = () => (
@@ -120,7 +130,8 @@ const CardContainerWithState = compose(
     <Fragment>
       {share}
       <section className='card-container card-container-with-state' onClick={onClick}>
-        <Card 
+        <Card shared={shared}
+          onClick={onClick}
           props={{
             img:'' ,
             title:'Sh2-101' ,
@@ -129,7 +140,8 @@ const CardContainerWithState = compose(
             fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
           }}
         />  
-        <Card 
+        <Card shared={shared}
+          onClick={onClick}
           props={{
             img:'' ,
             title:'Sh2-102' ,
@@ -138,7 +150,8 @@ const CardContainerWithState = compose(
             fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
           }}
         />  
-        <Card 
+        <Card shared={shared}
+          onClick={onClick}
           props={{
             img:'' ,
             title:'Sh2-103' ,
@@ -151,39 +164,6 @@ const CardContainerWithState = compose(
     </Fragment>
   )
 })
-
-// const CardContainer = () => (
-//   <section className='card-container'>
-//     <Card 
-//       props={{
-//         img:'' ,
-//         title:'Sh2-101' ,
-//         subtitle:'Tulip Nebula' ,
-//         description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
-//         fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
-//       }}
-//     />  
-//     <Card 
-//       props={{
-//         img:'' ,
-//         title:'Sh2-101' ,
-//         subtitle:'Tulip Nebula' ,
-//         description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
-//         fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
-//       }}
-//     />  
-//     <Card 
-//       props={{
-//         img:'' ,
-//         title:'Sh2-101' ,
-//         subtitle:'Tulip Nebula' ,
-//         description:'Sharpless 101 is a H II region emission nebula located in the constellation Cygnus. It is sometimes also called the Tulip Nebula because it appears to resemble the outline of a tulip when imaged photographicall', 
-//         fullsize:'https://c2.staticflickr.com/2/1875/30611527148_74cb6bf6ab_b.jpg'
-//       }}
-//     />  
-//   </section>
-// )
-
 
 const Main = () => (
   <EQLayout>
