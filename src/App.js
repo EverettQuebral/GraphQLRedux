@@ -58,7 +58,8 @@ const App = () => (
         <Route exact path='/reactiveui' component={ReactiveUILoadable} />
         <Route exact path='/renderprops' component={RenderPropsLoadable} />
         <Route exact path='/hoc' component={HOCLoadable} />
-        <Route exact path='/advancedui' component={AdvancedUILoadable} />
+        {/* <Route exact path='/advancedui' component={AdvancedUILoadable} /> */}
+        <Route exact path='/advancedui' render={ (routeProps) => ( <AdvancedUILoadable {...routeProps} />)} />
       </Switch>
     </Fragment>
   </Router>
