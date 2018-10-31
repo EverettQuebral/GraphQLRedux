@@ -6,7 +6,7 @@ const Button = ({ props, buttonState, onClick, children }) => (
     onClick={onClick}
     {...props}
   >
-    { buttonState === true ? props.text : children }
+    { buttonState ? props.text : children }
   </button>
 )
 
