@@ -1,4 +1,4 @@
-import Button from './Button'
+import { Button, ButtonWithStateHandler, ButtonWithPropsStateHandler } from './Button'
 import Form from './Form'
 import Input from './Input'
 import Row from './Row'
@@ -7,6 +7,8 @@ import Grid from './Grid'
 
 export {
   Button,
+  ButtonWithPropsStateHandler,
+  ButtonWithStateHandler,
   Form,
   Input,
   Row,

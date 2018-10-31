@@ -4,7 +4,7 @@ import EQLayout from './EQLayout'
 
 
 import { compose, withState, withHandlers, withProps, withStateHandlers } from 'recompose'
-import { Button, Form, Row, Col, Grid, Column } from './Components/Atoms'
+import { Button, ButtonWithStateHandler, Form, Row, Col, Grid, Column } from './Components/Atoms'
 import { Address } from './Components/Molecules'
 import { Login, Onboarding } from './Components/Organisms'
 
@@ -64,6 +64,7 @@ const HOC = () => (
       <h4>For maximizing Component Reuse, minimize code</h4>
       <p>An implementation of an Address Component that can support 200+ countries with a different services to call on validating the Address, giving an extra help of using Auto Detection, Auto Suggest and much more depending on the capability fro a particular country</p>
       <p>Work in Progress</p>
+      <ButtonWithStateHandler props={{ text: 'Button With State' }}>Testing Here</ButtonWithStateHandler>
     </Jumbotron>
     <Container>
       <hr />

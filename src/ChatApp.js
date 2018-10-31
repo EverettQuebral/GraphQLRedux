@@ -6,7 +6,7 @@ import { Form, Input, InputGroup, InputGroupAddon, Container, Jumbotron } from '
 
 import EQLayout from './EQLayout'
 import EQLoader from './EQLoader'
-import Button from './Components/Atoms/Button'
+import { Button } from './Components/Atoms/Button'
 
 const GET_MESSAGES = gql `
   query {
