@@ -1,7 +1,6 @@
 import React from 'react'
 import './Button.css'
-import { withHandlers, withState, withProps } from 'recompose'
-import { compose } from '../../../../../Library/Caches/typescript/3.1/node_modules/redux';
+import { withHandlers, withState, withProps, compose } from 'recompose'
 
 
 const Button = ({ props, buttonState, onClick, children }) => (

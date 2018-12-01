@@ -1,6 +1,6 @@
 /* eslint-disable import/first */
 
-import React, { Fragment } from 'react';
+import React, { Fragment, Suspense, lazy  } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -10,40 +10,19 @@ import Loadable from 'react-loadable'
 
 const Loading = () => <div>Loading...</div>
 
-const StarChatterLoadable = Loadable({
-  loader: () => import('./StarChatter'),
-  loading: () => <Loading />
-})
+const StarChatterLoadable = lazy(() => import('./StarChatter'));
 
-const ChatAppLoadable = Loadable({
-  loader: () => import('./ChatApp'),
-  loading: () => <Loading />
-})
+const ChatAppLoadable = lazy(() => import('./ChatApp'));
 
-const MainLoadable = Loadable({
-  loader: () => import('./Main'),
-  loading: () => <Loading />
-})
+const MainLoadable = lazy(() => import('./Main'));
 
-const ReactiveUILoadable = Loadable({
-  loader: () => import('./ReactiveUI'),
-  loading: () => <Loading />
-})
+const ReactiveUILoadable = lazy(() => import('./ReactiveUI'));
 
-const RenderPropsLoadable = Loadable({
-  loader: () => import('./RenderProps'),
-  loading: () => <Loading />
-})
+const RenderPropsLoadable = lazy(() => import('./RenderProps'));
 
-const AdvancedUILoadable = Loadable({
-  loader: () => import('./AdvancedUI'),
-  loading: () => <Loading />
-})
+const AdvancedUILoadable = lazy(() => import('./AdvancedUI'));
 
-const HOCLoadable = Loadable({
-  loader: () => import('./HOC'),
-  loading: () => <Loading />
-})
+const HOCLoadable = lazy(() => import('./HOC'));
 
 // import logo from './logo.svg';
 import './App.css';
@@ -52,14 +31,16 @@ const App = () => (
   <Router>
     <Fragment>
       <Switch>
-        <Route exact path='/' component={MainLoadable} />
-        <Route exact path='/chat' component={ChatAppLoadable} />
-        <Route exact path='/star' component={StarChatterLoadable} />
-        <Route exact path='/reactiveui' component={ReactiveUILoadable} />
-        <Route exact path='/renderprops' component={RenderPropsLoadable} />
-        <Route exact path='/hoc' component={HOCLoadable} />
-        {/* <Route exact path='/advancedui' component={AdvancedUILoadable} /> */}
-        <Route exact path='/advancedui' render={ (routeProps) => ( <AdvancedUILoadable {...routeProps} />)} />
+        <Suspense fallback={<Loading />}>
+          <Route exact path='/' component={MainLoadable} />
+          <Route exact path='/chat' component={ChatAppLoadable} />
+          <Route exact path='/star' component={StarChatterLoadable} />
+          <Route exact path='/reactiveui' component={ReactiveUILoadable} />
+          <Route exact path='/renderprops' component={RenderPropsLoadable} />
+          <Route exact path='/hoc' component={HOCLoadable} />
+          {/* <Route exact path='/advancedui' component={AdvancedUILoadable} /> */}
+          <Route exact path='/advancedui' render={ (routeProps) => ( <AdvancedUILoadable {...routeProps} />)} />
+        </Suspense>
       </Switch>
     </Fragment>
   </Router>
